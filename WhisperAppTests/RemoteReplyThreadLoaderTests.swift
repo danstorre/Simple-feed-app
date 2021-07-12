@@ -12,6 +12,8 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
         XCTAssertNil(client.requestedURL)
     }
     
+    // MARK:- Helpers
+    
     private class HTTPClientSpy: HTTPClient {
         var requestedURL: URL?
         
