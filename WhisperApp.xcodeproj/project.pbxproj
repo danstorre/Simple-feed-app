@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1A2E7CFE269B5F9100CA3294 /* WhisperApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2E7CF4269B5F9100CA3294 /* WhisperApp.framework */; };
-		1A2E7D03269B5F9100CA3294 /* WhisperAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E7D02269B5F9100CA3294 /* WhisperAppTests.swift */; };
-		1A2E7D05269B5F9100CA3294 /* WhisperApp.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A2E7CF7269B5F9100CA3294 /* WhisperApp.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1A2E7D0F269BCF8800CA3294 /* PopularReplyThreadLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E7D0E269BCF8800CA3294 /* PopularReplyThreadLoader.swift */; };
+		1A2E7D11269BD10900CA3294 /* Whisper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E7D10269BD10900CA3294 /* Whisper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,11 +24,11 @@
 
 /* Begin PBXFileReference section */
 		1A2E7CF4269B5F9100CA3294 /* WhisperApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WhisperApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1A2E7CF7269B5F9100CA3294 /* WhisperApp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WhisperApp.h; sourceTree = "<group>"; };
 		1A2E7CF8269B5F9100CA3294 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A2E7CFD269B5F9100CA3294 /* WhisperAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhisperAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1A2E7D02269B5F9100CA3294 /* WhisperAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhisperAppTests.swift; sourceTree = "<group>"; };
 		1A2E7D04269B5F9100CA3294 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A2E7D0E269BCF8800CA3294 /* PopularReplyThreadLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularReplyThreadLoader.swift; sourceTree = "<group>"; };
+		1A2E7D10269BD10900CA3294 /* Whisper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whisper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +71,8 @@
 		1A2E7CF6269B5F9100CA3294 /* WhisperApp */ = {
 			isa = PBXGroup;
 			children = (
-				1A2E7CF7269B5F9100CA3294 /* WhisperApp.h */,
+				1A2E7D0E269BCF8800CA3294 /* PopularReplyThreadLoader.swift */,
+				1A2E7D10269BD10900CA3294 /* Whisper.swift */,
 				1A2E7CF8269B5F9100CA3294 /* Info.plist */,
 			);
 			path = WhisperApp;
@@ -80,7 +81,6 @@
 		1A2E7D01269B5F9100CA3294 /* WhisperAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				1A2E7D02269B5F9100CA3294 /* WhisperAppTests.swift */,
 				1A2E7D04269B5F9100CA3294 /* Info.plist */,
 			);
 			path = WhisperAppTests;
@@ -93,7 +93,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A2E7D05269B5F9100CA3294 /* WhisperApp.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +146,7 @@
 				TargetAttributes = {
 					1A2E7CF3269B5F9100CA3294 = {
 						CreatedOnToolsVersion = 12.5;
+						LastSwiftMigration = 1250;
 					};
 					1A2E7CFC269B5F9100CA3294 = {
 						CreatedOnToolsVersion = 12.5;
@@ -194,6 +194,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A2E7D11269BD10900CA3294 /* Whisper.swift in Sources */,
+				1A2E7D0F269BCF8800CA3294 /* PopularReplyThreadLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +203,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A2E7D03269B5F9100CA3294 /* WhisperAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +341,7 @@
 		1A2E7D09269B5F9100CA3294 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -357,6 +359,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dansteam.WhisperApp;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -364,6 +367,7 @@
 		1A2E7D0A269B5F9100CA3294 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -388,6 +392,7 @@
 		1A2E7D0C269B5F9100CA3294 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = AEWQUX8MPM;
@@ -406,6 +411,7 @@
 		1A2E7D0D269B5F9100CA3294 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = AEWQUX8MPM;
