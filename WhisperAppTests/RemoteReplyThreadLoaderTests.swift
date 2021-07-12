@@ -7,7 +7,7 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
     func test_init_doesntRequestData() {
         let (_, client) = makeSUT()
         
-        XCTAssertNil(client.requestedURL)
+        XCTAssertTrue(client.requestedURLs.isEmpty)
     }
     
     func test_load_serviceLoadsDataUsingAnWhisperID() {
@@ -17,8 +17,10 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
         
         sut.load(from: whisperId)
         
-        XCTAssertEqual(client.requestedURL?.absoluteString,
-                       "http://a-url.com?wid=\(whisperId)")
+        let expectedURLs = [URL(string:  "http://a-url.com?wid=\(whisperId)")!]
+        
+        XCTAssertEqual(client.requestedURLs,
+                       expectedURLs)
     }
     
     func test_load_serviceDoesnLoadDataWhenWhisperIDIsEmpty() {
@@ -27,7 +29,24 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
         
         sut.load(from: emptyWhisperID)
         
-        XCTAssertNil(client.requestedURL)
+        XCTAssertTrue(client.requestedURLs.isEmpty)
+    }
+    
+    func test_load_twice_loadsFromURLTwice() {
+        let url = URL(string: "http://a-url.com")!
+        let whisperId = "anUUID"
+        let (sut, client) = makeSUT(url: url)
+        
+        sut.load(from: whisperId)
+        sut.load(from: whisperId)
+        
+        let expectedURLs = Array(
+            repeating: URL(string: "http://a-url.com?wid=\(whisperId)")!,
+            count: 2
+        )
+        
+        XCTAssertEqual(client.requestedURLs,
+                       expectedURLs)
     }
     
     // MARK:- Helpers
@@ -40,10 +59,14 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
     }
     
     private class HTTPClientSpy: HTTPClient {
-        var requestedURL: URL?
+        var messages: [URL] = [URL]()
+        
+        var requestedURLs: [URL] {
+            return messages.map { $0 }
+        }
         
         func getDataFrom(url: URL) {
-            requestedURL = url
+            messages.append(url)
         }
     }
 }
