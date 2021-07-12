@@ -12,12 +12,12 @@ public class RemoteReplyThreadLoader {
     
     public func load(from id: String) {
         var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
-        let queryItem = URLQueryItem(name: "wid", value: id)
+        let queryWhisperID = URLQueryItem(name: "wid", value: id)
         
-        urlComponents?.queryItems = [queryItem]
+        urlComponents?.queryItems = [queryWhisperID]
         
-        if let serviceURL = urlComponents?.url {
-            client.getDataFrom(url: serviceURL)
+        if let repliesFromWhisperURL = urlComponents?.url {
+            client.getDataFrom(url: repliesFromWhisperURL)
         }
     }
 }
