@@ -10,6 +10,7 @@
 		1A2E7CFE269B5F9100CA3294 /* WhisperApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2E7CF4269B5F9100CA3294 /* WhisperApp.framework */; };
 		1A2E7D0F269BCF8800CA3294 /* PopularReplyThreadLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E7D0E269BCF8800CA3294 /* PopularReplyThreadLoader.swift */; };
 		1A2E7D11269BD10900CA3294 /* Whisper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E7D10269BD10900CA3294 /* Whisper.swift */; };
+		1AD9676E269BD388002EEF2D /* RemoteReplyThreadLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD9676D269BD388002EEF2D /* RemoteReplyThreadLoaderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +30,8 @@
 		1A2E7D04269B5F9100CA3294 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A2E7D0E269BCF8800CA3294 /* PopularReplyThreadLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularReplyThreadLoader.swift; sourceTree = "<group>"; };
 		1A2E7D10269BD10900CA3294 /* Whisper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whisper.swift; sourceTree = "<group>"; };
+		1AD9676D269BD388002EEF2D /* RemoteReplyThreadLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteReplyThreadLoaderTests.swift; sourceTree = "<group>"; };
+		1AD9676F269BD49B002EEF2D /* WhisperAppTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WhisperAppTests-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +85,8 @@
 			isa = PBXGroup;
 			children = (
 				1A2E7D04269B5F9100CA3294 /* Info.plist */,
+				1AD9676D269BD388002EEF2D /* RemoteReplyThreadLoaderTests.swift */,
+				1AD9676F269BD49B002EEF2D /* WhisperAppTests-Bridging-Header.h */,
 			);
 			path = WhisperAppTests;
 			sourceTree = "<group>";
@@ -150,6 +155,7 @@
 					};
 					1A2E7CFC269B5F9100CA3294 = {
 						CreatedOnToolsVersion = 12.5;
+						LastSwiftMigration = 1250;
 					};
 				};
 			};
@@ -203,6 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1AD9676E269BD388002EEF2D /* RemoteReplyThreadLoaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +400,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = AEWQUX8MPM;
@@ -404,6 +412,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = dansteam.WhisperAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WhisperAppTests/WhisperAppTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -412,6 +422,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = AEWQUX8MPM;
@@ -423,6 +434,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = dansteam.WhisperAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WhisperAppTests/WhisperAppTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
