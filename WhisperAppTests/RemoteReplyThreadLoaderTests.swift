@@ -4,10 +4,8 @@ import WhisperApp
 
 class RemoteReplyThreadLoaderTests: XCTestCase {
     
-    func test_init_DoesntRequestData() {
-        let url = URL(string: "http://a-url.com")!
-        let client = HTTPClientSpy()
-        let _ = RemoteReplyThreadLoader(url: url, client: client)
+    func test_init_doesntRequestData() {
+        let (_, client) = makeSUT()
         
         XCTAssertNil(client.requestedURL)
     }
@@ -15,8 +13,7 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
     func test_load_serviceLoadsDataUsingAnWhisperID() {
         let url = URL(string: "http://a-url.com")!
         let whisperId = "anUUID"
-        let client = HTTPClientSpy()
-        let sut = RemoteReplyThreadLoader(url: url, client: client)
+        let (sut, client) = makeSUT(url: url)
         
         sut.load(from: whisperId)
         
@@ -25,6 +22,13 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
     }
     
     // MARK:- Helpers
+    
+    private func makeSUT(
+        url: URL = URL(string: "http://a-url.com")!,
+        client: HTTPClientSpy = HTTPClientSpy()
+    ) -> (RemoteReplyThreadLoader, HTTPClientSpy) {
+        (RemoteReplyThreadLoader(url: url, client: client), client)
+    }
     
     private class HTTPClientSpy: HTTPClient {
         var requestedURL: URL?
