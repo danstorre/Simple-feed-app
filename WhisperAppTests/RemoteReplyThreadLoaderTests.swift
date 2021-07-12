@@ -21,6 +21,15 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
                        "http://a-url.com?wid=\(whisperId)")
     }
     
+    func test_load_serviceDoesnLoadDataWhenWhisperIDIsEmpty() {
+        let emptyWhisperID = ""
+        let (sut, client) = makeSUT()
+        
+        sut.load(from: emptyWhisperID)
+        
+        XCTAssertNil(client.requestedURL)
+    }
+    
     // MARK:- Helpers
     
     private func makeSUT(
