@@ -1,19 +1,6 @@
 
 import XCTest
-
-class RemoteReplyThreadLoader {
-    let url: URL
-    let client: HTTPClient
-    
-    init(url: URL, client: HTTPClient) {
-        self.url = url
-        self.client = client
-    }
-}
-
-protocol HTTPClient {
-    func getDataFrom(url: URL)
-}
+import WhisperApp
 
 class RemoteReplyThreadLoaderTests: XCTestCase {
     

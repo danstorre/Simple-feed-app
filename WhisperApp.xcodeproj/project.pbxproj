@@ -11,6 +11,8 @@
 		1A2E7D0F269BCF8800CA3294 /* PopularReplyThreadLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E7D0E269BCF8800CA3294 /* PopularReplyThreadLoader.swift */; };
 		1A2E7D11269BD10900CA3294 /* Whisper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E7D10269BD10900CA3294 /* Whisper.swift */; };
 		1AD9676E269BD388002EEF2D /* RemoteReplyThreadLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD9676D269BD388002EEF2D /* RemoteReplyThreadLoaderTests.swift */; };
+		1AD96773269BD5F8002EEF2D /* RemoteReplyThreadLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD96772269BD5F8002EEF2D /* RemoteReplyThreadLoader.swift */; };
+		1AD96775269BD619002EEF2D /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD96774269BD619002EEF2D /* HTTPClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +34,8 @@
 		1A2E7D10269BD10900CA3294 /* Whisper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whisper.swift; sourceTree = "<group>"; };
 		1AD9676D269BD388002EEF2D /* RemoteReplyThreadLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteReplyThreadLoaderTests.swift; sourceTree = "<group>"; };
 		1AD9676F269BD49B002EEF2D /* WhisperAppTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WhisperAppTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		1AD96772269BD5F8002EEF2D /* RemoteReplyThreadLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteReplyThreadLoader.swift; sourceTree = "<group>"; };
+		1AD96774269BD619002EEF2D /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,7 @@
 		1A2E7CF6269B5F9100CA3294 /* WhisperApp */ = {
 			isa = PBXGroup;
 			children = (
+				1AD96771269BD5E4002EEF2D /* RemoteReplyThreadLoaderAPI */,
 				1A2E7D0E269BCF8800CA3294 /* PopularReplyThreadLoader.swift */,
 				1A2E7D10269BD10900CA3294 /* Whisper.swift */,
 				1A2E7CF8269B5F9100CA3294 /* Info.plist */,
@@ -89,6 +94,15 @@
 				1AD9676F269BD49B002EEF2D /* WhisperAppTests-Bridging-Header.h */,
 			);
 			path = WhisperAppTests;
+			sourceTree = "<group>";
+		};
+		1AD96771269BD5E4002EEF2D /* RemoteReplyThreadLoaderAPI */ = {
+			isa = PBXGroup;
+			children = (
+				1AD96772269BD5F8002EEF2D /* RemoteReplyThreadLoader.swift */,
+				1AD96774269BD619002EEF2D /* HTTPClient.swift */,
+			);
+			path = RemoteReplyThreadLoaderAPI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +216,8 @@
 			files = (
 				1A2E7D11269BD10900CA3294 /* Whisper.swift in Sources */,
 				1A2E7D0F269BCF8800CA3294 /* PopularReplyThreadLoader.swift in Sources */,
+				1AD96775269BD619002EEF2D /* HTTPClient.swift in Sources */,
+				1AD96773269BD5F8002EEF2D /* RemoteReplyThreadLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
