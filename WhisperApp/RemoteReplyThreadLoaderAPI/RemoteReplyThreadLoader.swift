@@ -31,7 +31,6 @@ public class RemoteReplyThreadLoader {
         return urlComponents?.url
     }
     
-    
     private func isValid(id: String) -> Bool {
         !id.isEmpty
     }
