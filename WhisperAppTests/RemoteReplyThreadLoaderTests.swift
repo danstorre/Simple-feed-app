@@ -79,10 +79,10 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
         })
     }
     
-    func test_load_deliversEmptyItemGraphOn200HTTPResponseWithEmptyList() {
+    func test_load_deliversEmptyItemGraphOn200HTTPResponseWithEmptyList() throws {
         let (sut, client) = makeSUT()
         
-        let emptyListJSON = String("{\"replies\":[]}").data(using: .utf8)!
+        let emptyListJSON = try createJSON(from: [])
         
         expect(result: .success([]), from: sut) {
             client.completeWith(code: 200, data: emptyListJSON)
