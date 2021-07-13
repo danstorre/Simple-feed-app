@@ -92,7 +92,6 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
     func test_load_deliversRepliesOn200HTTPResponseWithValidJSON() throws {
         let (sut, client) = makeSUT()
         
-        // create items to expect.
         let whisperReply1 = RemoteWhisperReply(id: "id",
                                                heartCount: 2,
                                                replies: 2,
@@ -109,18 +108,15 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
         
         let jsonWhisper2 = createJSONObjectFrom(reply: whisperReply2)
         
-        // create json from those items.
         let whisperReplies = [whisperReply1, whisperReply2]
+        
         let json = try createJSON(from: [jsonWhisper1, jsonWhisper2])
     
-        // complete service with that json.
         expect(result: .success(whisperReplies), from: sut) {
             client.completeWith(code: 200, data: json)
         }
     }
-    
-    // test parse data correctly.
-    // check for async tasks.
+
     private func createJSONObjectFrom(reply: RemoteWhisperReply) -> [String: Any] {
         [
             "wid": reply.id,
