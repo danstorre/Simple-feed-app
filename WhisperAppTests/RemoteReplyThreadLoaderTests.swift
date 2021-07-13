@@ -79,6 +79,64 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
         })
     }
     
+    func test_load_deliversEmptyItemGraphOn200HTTPResponseWithEmptyList() {
+        let (sut, client) = makeSUT()
+        
+        let emptyListJSON = String("{\"replies\":[]}").data(using: .utf8)!
+        
+        expect(result: .success([]), from: sut) {
+            client.completeWith(code: 200, data: emptyListJSON)
+        }
+    }
+    
+    func test_load_deliversRepliesOn200HTTPResponseWithValidJSON() throws {
+        let (sut, client) = makeSUT()
+        
+        // create items to expect.
+        let whisperReply1 = RemoteWhisperReply(id: "id",
+                                               heartCount: 2,
+                                               replies: 2,
+                                               text: "a text",
+                                               imageURL: URL(string: "http://a-URL-1.com")!)
+        
+        let jsonWhisper1 = createJSONObjectFrom(reply: whisperReply1)
+        
+        let whisperReply2 = RemoteWhisperReply(id: "id2",
+                                               heartCount: 4,
+                                               replies: 4,
+                                               text: "a second text",
+                                               imageURL: URL(string: "http://a-URL-2.com")!)
+        
+        let jsonWhisper2 = createJSONObjectFrom(reply: whisperReply2)
+        
+        // create json from those items.
+        let whisperReplies = [whisperReply1, whisperReply2]
+        let json = try createJSON(from: [jsonWhisper1, jsonWhisper2])
+    
+        // complete service with that json.
+        expect(result: .success(whisperReplies), from: sut) {
+            client.completeWith(code: 200, data: json)
+        }
+    }
+    
+    // test parse data correctly.
+    // check for async tasks.
+    private func createJSONObjectFrom(reply: RemoteWhisperReply) -> [String: Any] {
+        [
+            "wid": reply.id,
+            "me2": reply.heartCount,
+            "replies": reply.replies,
+            "text": reply.text,
+            "url": reply.imageURL.absoluteString
+        ].compactMapValues { $0 }
+    }
+    
+    private func createJSON(from replies: [[String: Any]]) throws -> Data {
+        let dict = ["replies": replies]
+        
+        return try JSONSerialization.data(withJSONObject: dict)
+    }
+    
     // MARK:- Helpers
     private func expect(
         result: RemoteReplyThreadLoader.Result,
