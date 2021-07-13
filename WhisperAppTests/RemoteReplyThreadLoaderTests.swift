@@ -65,9 +65,18 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
         
         samples.enumerated().forEach { index, code in
             expect(result: .failure(.invalidData), from: sut, when: {
-                client.completeWith(code: code, at: index)
+                client.completeWith(code: code, data: Data(), at: index)
             })
         }
+    }
+    
+    func test_load_deliversInvalidDataOn200HttpResponseWithInvalidJson() {
+        let (sut, client) = makeSUT()
+        
+        let invalidJSON = String("invalid json").data(using: .utf8)!
+        expect(result: .failure(.invalidData), from: sut, when: {
+            client.completeWith(code: 200, data: invalidJSON)
+        })
     }
     
     // MARK:- Helpers
@@ -129,12 +138,12 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
             messages[index].completion(.failure(error))
         }
         
-        func completeWith(code: Int, at index: Int = 0) {
+        func completeWith(code: Int, data: Data, at index: Int = 0) {
             let httpResponse = HTTPURLResponse(url: messages[index].url,
                                                statusCode: code,
                                                httpVersion: nil,
                                                headerFields: nil)!
-            messages[index].completion(.success(httpResponse))
+            messages[index].completion(.success(httpResponse, data))
         }
     }
 }
