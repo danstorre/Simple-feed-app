@@ -67,10 +67,10 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
         
         let samples = [199,201,300,400,500]
         
-        samples.enumerated().forEach { [weak self] index, code in
+        samples.enumerated().forEach { index, code in
             var capturedResult = [RemoteReplyThreadLoader.Result]()
             
-            self?.loadWith(sut: sut) { result in
+            loadWith(sut: sut) { result in
                 capturedResult.append(result)
             }
             
@@ -85,7 +85,18 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
         url: URL = URL(string: "http://a-url.com")!,
         client: HTTPClientSpy = HTTPClientSpy()
     ) -> (RemoteReplyThreadLoader, HTTPClientSpy) {
-        (RemoteReplyThreadLoader(url: url, client: client), client)
+        let sut = RemoteReplyThreadLoader(url: url, client: client)
+        
+        checkForMemoryLeak(instance: sut)
+        checkForMemoryLeak(instance: client)
+        
+        return (sut, client)
+    }
+    
+    private func checkForMemoryLeak(instance: AnyObject) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance, "instance should be deallocated potential memory leak")
+        }
     }
     
     private func loadWith(id whisperId: String = "whisperID",
