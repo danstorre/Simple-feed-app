@@ -65,18 +65,22 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
     func test_load_deliversInvalidDataOnNon200HTTPResponse() {
         let (sut, client) = makeSUT()
         
-        var capturedResult = [RemoteReplyThreadLoader.Result]()
-        loadWith(sut: sut) { result in
-            capturedResult.append(result)
+        let samples = [199,201,300,400,500]
+        
+        samples.enumerated().forEach { [weak self] index, code in
+            var capturedResult = [RemoteReplyThreadLoader.Result]()
+            
+            self?.loadWith(sut: sut) { result in
+                capturedResult.append(result)
+            }
+            
+            client.completeWith(code: code, at: index)
+            
+            XCTAssertEqual(capturedResult, [.failure(.invalidData)])
         }
-        
-        client.completeWith(code: 400)
-        
-        XCTAssertEqual(capturedResult, [.failure(.invalidData)])
     }
     
     // MARK:- Helpers
-    
     private func makeSUT(
         url: URL = URL(string: "http://a-url.com")!,
         client: HTTPClientSpy = HTTPClientSpy()
