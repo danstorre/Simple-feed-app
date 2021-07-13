@@ -51,15 +51,11 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
     
     func test_load_deliversConnectivityErrorOnClientError() {
         let (sut, client) = makeSUT()
-        var capturedError = [RemoteReplyThreadLoader.Result]()
-        loadWith(sut: sut) { result in
-            capturedError.append(result)
-        }
         
-        let clientError = NSError(domain: "client error", code: 1, userInfo: nil)
-        client.completeWith(error: clientError)
-        
-        XCTAssertEqual(capturedError, [.failure(.connectivityError)])
+        expect(result: .failure(.connectivityError), from: sut, when: {
+            let clientError = NSError(domain: "client error", code: 1, userInfo: nil)
+            client.completeWith(error: clientError)
+        })
     }
     
     func test_load_deliversInvalidDataOnNon200HTTPResponse() {
@@ -68,19 +64,32 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
         let samples = [199,201,300,400,500]
         
         samples.enumerated().forEach { index, code in
-            var capturedResult = [RemoteReplyThreadLoader.Result]()
-            
-            loadWith(sut: sut) { result in
-                capturedResult.append(result)
-            }
-            
-            client.completeWith(code: code, at: index)
-            
-            XCTAssertEqual(capturedResult, [.failure(.invalidData)])
+            expect(result: .failure(.invalidData), from: sut, when: {
+                client.completeWith(code: code, at: index)
+            })
         }
     }
     
     // MARK:- Helpers
+    private func expect(
+        result: RemoteReplyThreadLoader.Result,
+        from sut: RemoteReplyThreadLoader,
+        when completion: () -> Void,
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) {
+        var capturedResults = [RemoteReplyThreadLoader.Result]()
+        
+        loadWith(sut: sut) { result in
+            capturedResults.append(result)
+        }
+        
+        completion()
+        
+        XCTAssertEqual(capturedResults, [result], file: file,
+                       line: line)
+    }
+    
     private func makeSUT(
         url: URL = URL(string: "http://a-url.com")!,
         client: HTTPClientSpy = HTTPClientSpy()
