@@ -51,17 +51,28 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
     
     func test_load_deliversConnectivityErrorOnClientError() {
         let (sut, client) = makeSUT()
-        let whisperId = "anUUID"
-        
-        var capturedError = [RemoteReplyThreadLoader.Error]()
-        sut.load(from: whisperId, completion: { error in
-            capturedError.append(error)
-        })
+        var capturedError = [RemoteReplyThreadLoader.Result]()
+        loadWith(sut: sut) { result in
+            capturedError.append(result)
+        }
         
         let clientError = NSError(domain: "client error", code: 1, userInfo: nil)
         client.completeWith(error: clientError)
         
-        XCTAssertEqual(capturedError, [.connectivityError])
+        XCTAssertEqual(capturedError, [.failure(.connectivityError)])
+    }
+    
+    func test_load_deliversInvalidDataOnNon200HTTPResponse() {
+        let (sut, client) = makeSUT()
+        
+        var capturedResult = [RemoteReplyThreadLoader.Result]()
+        loadWith(sut: sut) { result in
+            capturedResult.append(result)
+        }
+        
+        client.completeWith(code: 400)
+        
+        XCTAssertEqual(capturedResult, [.failure(.invalidData)])
     }
     
     // MARK:- Helpers
@@ -73,19 +84,33 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
         (RemoteReplyThreadLoader(url: url, client: client), client)
     }
     
+    private func loadWith(id whisperId: String = "whisperID",
+                          sut: RemoteReplyThreadLoader,
+                          completion: @escaping (RemoteReplyThreadLoader.Result) -> Void) {
+        sut.load(from: whisperId, completion: completion)
+    }
+    
     private class HTTPClientSpy: HTTPClient {
-        var messages: [(url: URL, completion: (Error) -> Void)] = []
+        var messages: [(url: URL, completion: (HTTPClientResult) -> Void)] = []
         
         var requestedURLs: [URL] {
             return messages.map { $0.url }
         }
         
-        func getDataFrom(url: URL, completion: @escaping (Error) -> Void) {
+        func getDataFrom(url: URL, completion: @escaping (HTTPClientResult) -> Void) {
             messages.append((url, completion))
         }
         
         func completeWith(error: NSError, at index: Int = 0) {
-            messages[index].completion(error)
+            messages[index].completion(.failure(error))
+        }
+        
+        func completeWith(code: Int, at index: Int = 0) {
+            let httpResponse = HTTPURLResponse(url: messages[index].url,
+                                               statusCode: code,
+                                               httpVersion: nil,
+                                               headerFields: nil)!
+            messages[index].completion(.success(httpResponse))
         }
     }
 }

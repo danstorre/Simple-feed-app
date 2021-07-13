@@ -12,15 +12,25 @@ public class RemoteReplyThreadLoader {
     
     public enum Error: Swift.Error, Equatable {
         case connectivityError
+        case invalidData
     }
     
-    public func load(from id: String, completion: @escaping (Error) -> Void) {
+    public enum Result: Equatable {
+        case failure(Error)
+    }
+    
+    public func load(from id: String, completion: @escaping (Result) -> Void) {
         guard let repliesFromWhisperURL = createWhisperURL(from: id) else {
             return
         }
         
-        client.getDataFrom(url: repliesFromWhisperURL, completion: { error in
-            completion(Error.connectivityError)
+        client.getDataFrom(url: repliesFromWhisperURL, completion: { result in
+            switch result {
+            case .success:
+                completion(.failure(.invalidData))
+            case .failure:
+                completion(.failure(.connectivityError))
+            }
         })
     }
     
