@@ -2,18 +2,6 @@
 import XCTest
 import WhisperApp
 
-class GraphRepliesMaker {
-    let loader: ReplyThreadLoader
-    
-    init(loader: ReplyThreadLoader) {
-        self.loader = loader
-    }
-}
-
-protocol ReplyThreadLoader {
-    func load(repliesFrom: String, completion: @escaping ([RemoteWhisperReply]) -> Void)
-}
-
 class GraphRepliesMakerTests: XCTestCase {
 
     func test_init_doesntRequestAnyReplyWhispers() {
