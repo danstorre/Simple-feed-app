@@ -7,4 +7,8 @@ public final class GraphRepliesMaker {
     public init(loader: ReplyThreadLoader) {
         self.loader = loader
     }
+    
+    public func createGraphFrom(whisperID: String) {
+        loader.load(repliesFrom: whisperID) { _ in }
+    }
 }

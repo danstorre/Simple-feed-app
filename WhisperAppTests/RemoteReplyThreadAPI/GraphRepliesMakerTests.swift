@@ -5,10 +5,27 @@ import WhisperApp
 class GraphRepliesMakerTests: XCTestCase {
 
     func test_init_doesntRequestAnyReplyWhispers() {
-        let service = ReplyThreadLoaderSpy()
-        let _ = GraphRepliesMaker(loader: service)
+        let loader = ReplyThreadLoaderSpy()
+        let _ = GraphRepliesMaker(loader: loader)
         
-        XCTAssertEqual(service.requestedIds, [])
+        XCTAssertEqual(loader.requestedIds, [])
+    }
+    
+    func test_createGraph_requestsRepliesFromGivenWhisperId() {
+        let (sut, loader) = makeSUT()
+        
+        let whisperID = "anID"
+        sut.createGraphFrom(whisperID: whisperID)
+        
+        XCTAssertEqual(loader.requestedIds, [whisperID])
+    }
+    
+    // MARK: - helpers
+    private func makeSUT() -> (sut: GraphRepliesMaker,
+                               loader: ReplyThreadLoaderSpy) {
+        let loader = ReplyThreadLoaderSpy()
+        let sut = GraphRepliesMaker(loader: loader)
+        return (sut, loader)
     }
     
     private class ReplyThreadLoaderSpy: ReplyThreadLoader {
