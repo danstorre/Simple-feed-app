@@ -94,10 +94,18 @@
 			isa = PBXGroup;
 			children = (
 				1A2E7D04269B5F9100CA3294 /* Info.plist */,
-				1AD9676D269BD388002EEF2D /* RemoteReplyThreadLoaderTests.swift */,
+				1A54637F269E37B0006A925E /* RemoteReplyThreadAPI */,
 				1AD9676F269BD49B002EEF2D /* WhisperAppTests-Bridging-Header.h */,
 			);
 			path = WhisperAppTests;
+			sourceTree = "<group>";
+		};
+		1A54637F269E37B0006A925E /* RemoteReplyThreadAPI */ = {
+			isa = PBXGroup;
+			children = (
+				1AD9676D269BD388002EEF2D /* RemoteReplyThreadLoaderTests.swift */,
+			);
+			path = RemoteReplyThreadAPI;
 			sourceTree = "<group>";
 		};
 		1AD96771269BD5E4002EEF2D /* RemoteReplyThreadLoaderAPI */ = {
