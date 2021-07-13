@@ -25,7 +25,7 @@ public struct RemoteWhisperReply: Equatable, Decodable {
     }
 }
 
-public class RemoteReplyThreadLoader {
+public final class RemoteReplyThreadLoader {
     private let url: URL
     private let client: HTTPClient
     
@@ -74,24 +74,5 @@ public class RemoteReplyThreadLoader {
     
     private func isValid(id: String) -> Bool {
         !id.isEmpty
-    }
-}
-
-private class RemoteReplyThreadLoaderMapper {
-    private struct RemoteWhisperReplyRoot: Decodable {
-        let replies: [RemoteWhisperReply]
-        
-        enum CodingKeys: String, CodingKey {
-            case replies
-        }
-    }
-    
-    static func map(response: HTTPURLResponse, data: Data) -> RemoteReplyThreadLoader.Result {
-        guard response.statusCode == 200,
-              let root = try? JSONDecoder().decode(RemoteWhisperReplyRoot.self, from: data) else {
-            return .failure(.invalidData)
-        }
-        
-        return .success(root.replies)
     }
 }
