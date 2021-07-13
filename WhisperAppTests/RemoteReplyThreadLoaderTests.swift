@@ -32,7 +32,7 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
         XCTAssertTrue(client.requestedURLs.isEmpty)
     }
     
-    func test_load_twice_loadsFromURLTwice() {
+    func test_load_twice_requestsDataFromURLTwice() {
         let url = URL(string: "http://a-url.com")!
         let whisperId = "anUUID"
         let (sut, client) = makeSUT(url: url)
