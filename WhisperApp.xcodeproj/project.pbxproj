@@ -11,6 +11,7 @@
 		1A2E7D0F269BCF8800CA3294 /* PopularReplyThreadLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E7D0E269BCF8800CA3294 /* PopularReplyThreadLoader.swift */; };
 		1A2E7D11269BD10900CA3294 /* Whisper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E7D10269BD10900CA3294 /* Whisper.swift */; };
 		1A54637C269E2CC1006A925E /* RemoteReplyThreadMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A54637B269E2CC1006A925E /* RemoteReplyThreadMapper.swift */; };
+		1A54637E269E2D06006A925E /* RemoteWhisperReply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A54637D269E2D06006A925E /* RemoteWhisperReply.swift */; };
 		1AD9676E269BD388002EEF2D /* RemoteReplyThreadLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD9676D269BD388002EEF2D /* RemoteReplyThreadLoaderTests.swift */; };
 		1AD96773269BD5F8002EEF2D /* RemoteReplyThreadLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD96772269BD5F8002EEF2D /* RemoteReplyThreadLoader.swift */; };
 		1AD96775269BD619002EEF2D /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD96774269BD619002EEF2D /* HTTPClient.swift */; };
@@ -34,6 +35,7 @@
 		1A2E7D0E269BCF8800CA3294 /* PopularReplyThreadLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularReplyThreadLoader.swift; sourceTree = "<group>"; };
 		1A2E7D10269BD10900CA3294 /* Whisper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Whisper.swift; sourceTree = "<group>"; };
 		1A54637B269E2CC1006A925E /* RemoteReplyThreadMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteReplyThreadMapper.swift; sourceTree = "<group>"; };
+		1A54637D269E2D06006A925E /* RemoteWhisperReply.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteWhisperReply.swift; sourceTree = "<group>"; };
 		1AD9676D269BD388002EEF2D /* RemoteReplyThreadLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteReplyThreadLoaderTests.swift; sourceTree = "<group>"; };
 		1AD9676F269BD49B002EEF2D /* WhisperAppTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WhisperAppTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		1AD96772269BD5F8002EEF2D /* RemoteReplyThreadLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteReplyThreadLoader.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				1AD96772269BD5F8002EEF2D /* RemoteReplyThreadLoader.swift */,
 				1AD96774269BD619002EEF2D /* HTTPClient.swift */,
 				1A54637B269E2CC1006A925E /* RemoteReplyThreadMapper.swift */,
+				1A54637D269E2D06006A925E /* RemoteWhisperReply.swift */,
 			);
 			path = RemoteReplyThreadLoaderAPI;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A2E7D11269BD10900CA3294 /* Whisper.swift in Sources */,
+				1A54637E269E2D06006A925E /* RemoteWhisperReply.swift in Sources */,
 				1A2E7D0F269BCF8800CA3294 /* PopularReplyThreadLoader.swift in Sources */,
 				1AD96775269BD619002EEF2D /* HTTPClient.swift in Sources */,
 				1A54637C269E2CC1006A925E /* RemoteReplyThreadMapper.swift in Sources */,
