@@ -116,6 +116,27 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
             client.completeWith(code: 200, data: json)
         }
     }
+    
+    func test_load_doesntDeliverRepliesWhenDeallocated() throws {
+        let url = URL(string: "http://a-url.com")!
+        let client = HTTPClientSpy()
+        var sut: RemoteReplyThreadLoader? = RemoteReplyThreadLoader(url: url,
+                                                                    client: client)
+        
+        var capturedResults = [RemoteReplyThreadLoader.Result]()
+        
+        sut?.load(from: "anWhisperID",
+                  completion: { result in
+            capturedResults.append(result)
+        })
+        
+        sut = nil
+        
+        let json = try createJSON(from: [])
+        client.completeWith(code: 200, data: json)
+        
+        XCTAssertTrue(capturedResults.isEmpty)
+    }
 
     private func createJSONObjectFrom(reply: RemoteWhisperReply) -> [String: Any] {
         [

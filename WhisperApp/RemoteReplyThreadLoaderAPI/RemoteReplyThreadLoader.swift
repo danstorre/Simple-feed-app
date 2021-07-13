@@ -25,7 +25,9 @@ public final class RemoteReplyThreadLoader {
             return
         }
         
-        client.getDataFrom(url: repliesFromWhisperURL, completion: { result in
+        client.getDataFrom(url: repliesFromWhisperURL, completion: { [weak self] result in
+            guard self != nil else { return }
+            
             switch result {
             case let .success(response, data):
                 completion(RemoteReplyThreadLoaderMapper.map(response: response, data: data))
