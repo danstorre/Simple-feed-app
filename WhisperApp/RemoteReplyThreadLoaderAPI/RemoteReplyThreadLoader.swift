@@ -52,13 +52,7 @@ public class RemoteReplyThreadLoader {
         client.getDataFrom(url: repliesFromWhisperURL, completion: { result in
             switch result {
             case let .success(response, data):
-                guard response.statusCode == 200,
-                      let root = try? JSONDecoder().decode(RemoteWhisperReplyRoot.self, from: data) else {
-                    completion(.failure(.invalidData))
-                    return
-                }
-                
-                completion(.success(root.replies))
+                completion(RemoteReplyThreadLoaderMapper.map(response: response, data: data))
             case .failure:
                 completion(.failure(.connectivityError))
             }
@@ -81,12 +75,23 @@ public class RemoteReplyThreadLoader {
     private func isValid(id: String) -> Bool {
         !id.isEmpty
     }
-    
+}
+
+private class RemoteReplyThreadLoaderMapper {
     private struct RemoteWhisperReplyRoot: Decodable {
         let replies: [RemoteWhisperReply]
         
         enum CodingKeys: String, CodingKey {
             case replies
         }
+    }
+    
+    static func map(response: HTTPURLResponse, data: Data) -> RemoteReplyThreadLoader.Result {
+        guard response.statusCode == 200,
+              let root = try? JSONDecoder().decode(RemoteWhisperReplyRoot.self, from: data) else {
+            return .failure(.invalidData)
+        }
+        
+        return .success(root.replies)
     }
 }
