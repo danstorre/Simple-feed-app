@@ -15,7 +15,7 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
         let whisperId = "anUUID"
         let (sut, client) = makeSUT(url: url)
         
-        sut.load(from: whisperId)
+        sut.load(from: whisperId) { _ in}
         
         let expectedURLs = [URL(string:  "http://a-url.com?wid=\(whisperId)")!]
         
@@ -27,7 +27,7 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
         let emptyWhisperID = ""
         let (sut, client) = makeSUT()
         
-        sut.load(from: emptyWhisperID)
+        sut.load(from: emptyWhisperID) { _ in}
         
         XCTAssertTrue(client.requestedURLs.isEmpty)
     }
@@ -37,8 +37,8 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
         let whisperId = "anUUID"
         let (sut, client) = makeSUT(url: url)
         
-        sut.load(from: whisperId)
-        sut.load(from: whisperId)
+        sut.load(from: whisperId) { _ in}
+        sut.load(from: whisperId) { _ in}
         
         let expectedURLs = Array(
             repeating: URL(string: "http://a-url.com?wid=\(whisperId)")!,
@@ -47,6 +47,21 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
         
         XCTAssertEqual(client.requestedURLs,
                        expectedURLs)
+    }
+    
+    func test_load_deliversConnectivityErrorOnClientError() {
+        let (sut, client) = makeSUT()
+        let whisperId = "anUUID"
+        
+        var capturedError = [RemoteReplyThreadLoader.Error]()
+        sut.load(from: whisperId, completion: { error in
+            capturedError.append(error)
+        })
+        
+        let clientError = NSError(domain: "client error", code: 1, userInfo: nil)
+        client.completeWith(error: clientError)
+        
+        XCTAssertEqual(capturedError, [.connectivityError])
     }
     
     // MARK:- Helpers
@@ -59,14 +74,18 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
     }
     
     private class HTTPClientSpy: HTTPClient {
-        var messages: [URL] = [URL]()
+        var messages: [(url: URL, completion: (Error) -> Void)] = []
         
         var requestedURLs: [URL] {
-            return messages.map { $0 }
+            return messages.map { $0.url }
         }
         
-        func getDataFrom(url: URL) {
-            messages.append(url)
+        func getDataFrom(url: URL, completion: @escaping (Error) -> Void) {
+            messages.append((url, completion))
+        }
+        
+        func completeWith(error: NSError, at index: Int = 0) {
+            messages[index].completion(error)
         }
     }
 }

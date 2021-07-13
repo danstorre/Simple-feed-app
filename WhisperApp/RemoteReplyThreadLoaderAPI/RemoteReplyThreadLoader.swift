@@ -10,12 +10,18 @@ public class RemoteReplyThreadLoader {
         self.client = client
     }
     
-    public func load(from id: String) {
+    public enum Error: Swift.Error, Equatable {
+        case connectivityError
+    }
+    
+    public func load(from id: String, completion: @escaping (Error) -> Void) {
         guard let repliesFromWhisperURL = createWhisperURL(from: id) else {
             return
         }
         
-        client.getDataFrom(url: repliesFromWhisperURL)
+        client.getDataFrom(url: repliesFromWhisperURL, completion: { error in
+            completion(Error.connectivityError)
+        })
     }
     
     private func createWhisperURL(from id: String) -> URL? {
