@@ -30,9 +30,24 @@ class GraphRepliesMakerTests: XCTestCase {
             capturedResults.append(result)
         }
         
-        loader.completeWith(error: NSError(domain: "network error", code: 0))
+        loader.completeWith(error: .connectivityError)
         
         XCTAssertEqual(capturedResults, [.failure(.connectivityError)])
+    }
+    
+    func test_createGraph_deliversInvalidDataWhenLoaderFailsWithInvalidData() {
+        let (sut, loader) = makeSUT()
+        
+        let whisperID = "anID"
+        var capturedResults = [GraphRepliesMaker.Result]()
+        
+        sut.createGraphFrom(whisperID: whisperID) { result in
+            capturedResults.append(result)
+        }
+        
+        loader.completeWith(error: .invalidData)
+        
+        XCTAssertEqual(capturedResults, [.failure(.invalidData)])
     }
     
     // MARK: - helpers
@@ -54,7 +69,7 @@ class GraphRepliesMakerTests: XCTestCase {
             messages.append((id, completion))
         }
         
-        func completeWith(error: Error, at index: Int = 0) {
+        func completeWith(error: ReplyThreadLoaderError, at index: Int = 0) {
             messages[index].completion(.failure(error))
         }
     }

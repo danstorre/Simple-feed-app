@@ -10,6 +10,7 @@ public final class GraphRepliesMaker {
     
     public enum Error: Swift.Error, Equatable {
         case connectivityError
+        case invalidData
     }
     
     public init(loader: ReplyThreadLoader) {
@@ -19,7 +20,17 @@ public final class GraphRepliesMaker {
     public func createGraphFrom(whisperID: String,
                                 completion: @escaping (Result) -> Void = { _ in }) {
         loader.load(repliesFrom: whisperID) { result in
-            completion(.failure(.connectivityError))
+            switch result {
+            case let .failure(error):
+                switch error {
+                case .connectivityError:
+                    completion(.failure(.connectivityError))
+                case .invalidData:
+                    completion(.failure(.invalidData))
+                }
+            case .success(_):
+                break
+            }
         }
     }
 }

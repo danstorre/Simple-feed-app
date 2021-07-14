@@ -1,9 +1,14 @@
 
 import Foundation
 
+public enum ReplyThreadLoaderError {
+    case connectivityError
+    case invalidData
+}
+
 public enum ReplyThreadLoaderResult {
     case success([RemoteWhisperReply])
-    case failure(Error)
+    case failure(ReplyThreadLoaderError)
 }
 
 public protocol ReplyThreadLoader {
