@@ -17,7 +17,7 @@ public final class RemoteReplyThreadLoader {
     
     public enum Result: Equatable {
         case failure(Error)
-        case success([RemoteWhisperReply])
+        case success([Whisper])
     }
     
     public func load(from id: String, completion: @escaping (Result) -> Void) {

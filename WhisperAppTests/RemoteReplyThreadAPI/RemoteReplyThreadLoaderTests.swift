@@ -108,7 +108,7 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
         
         let jsonWhisper2 = createJSONObjectFrom(reply: whisperReply2)
         
-        let whisperReplies = [whisperReply1, whisperReply2]
+        let whisperReplies = [whisperReply1, whisperReply2].map(createWhisper)
         
         let json = try createJSON(from: [jsonWhisper1, jsonWhisper2])
     
@@ -137,6 +137,15 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
         
         XCTAssertTrue(capturedResults.isEmpty)
     }
+    
+    // MARK:- Helpers
+    private func createWhisper(from remoteWhisper: RemoteWhisperReply) -> Whisper {
+        Whisper(description: remoteWhisper.text,
+                heartCount: remoteWhisper.heartCount,
+                replyCount: remoteWhisper.replies,
+                image: remoteWhisper.imageURL,
+                wildCardID: remoteWhisper.id)
+    }
 
     private func createJSONObjectFrom(reply: RemoteWhisperReply) -> [String: Any] {
         [
@@ -154,7 +163,6 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
         return try JSONSerialization.data(withJSONObject: dict)
     }
     
-    // MARK:- Helpers
     private func expect(
         result: RemoteReplyThreadLoader.Result,
         from sut: RemoteReplyThreadLoader,
