@@ -5,7 +5,7 @@ public final class GraphRepliesMaker {
     private let loader: ReplyThreadLoader
     
     public enum Result: Equatable {
-        case success
+        case success(Whisper)
         case failure(Error)
     }
     
@@ -22,6 +22,11 @@ public final class GraphRepliesMaker {
                                 completion: @escaping (Result) -> Void = { _ in }) {
         loader.load(repliesFrom: whisper.wildCardID) { result in
             switch result {
+            case let .success(replyWhispers):
+                var whisperRoot = whisper
+                whisperRoot.replies = replyWhispers
+                completion(.success(whisperRoot))
+            
             case let .failure(error):
                 switch error {
                 case .connectivityError:
@@ -29,8 +34,6 @@ public final class GraphRepliesMaker {
                 case .invalidData:
                     completion(.failure(.invalidData))
                 }
-            case .success(_):
-                break
             }
         }
     }

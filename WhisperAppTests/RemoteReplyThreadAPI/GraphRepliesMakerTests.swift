@@ -36,6 +36,27 @@ class GraphRepliesMakerTests: XCTestCase {
         })
     }
     
+    func test_createGraph_deliversCompleteGraphWhenRepliesDontHaveReplies() {
+        let (sut, loader) = makeSUT()
+
+        let whisperReply1 = createWhisper(wildCardID: "1")
+
+        let whisperReply2 = createWhisper(wildCardID: "2")
+
+        let whisperRoot = createWhisper(wildCardID: "0")
+        
+        let whisperResult = Whisper(description: whisperRoot.description,
+                                    heartCount: whisperRoot.heartCount,
+                                    replyCount: whisperRoot.replyCount,
+                                    image: whisperRoot.image,
+                                    wildCardID: whisperRoot.wildCardID,
+                                    replies: [whisperReply1, whisperReply2])
+
+        expect(result: .success(whisperResult), from: sut, and: whisperRoot, when: {
+            loader.completesWith(whispers: [whisperReply1, whisperReply2])
+        })
+    }
+    
     // MARK: - helpers
     private func createWhisper(
         description: String = "a whisper description",
@@ -53,8 +74,13 @@ class GraphRepliesMakerTests: XCTestCase {
     
     private func expect(result: GraphRepliesMaker.Result,
                         from sut: GraphRepliesMaker,
-                        when completionBlock: @escaping () -> Void) {
-        let whisper = createWhisper()
+                        and whisper: Whisper = Whisper(description: "a whisper description",
+                                                       heartCount: 2,
+                                                       replyCount: 4,
+                                                       image: URL(string: "http://a-url.com")!,
+                                                       wildCardID: "1"),
+                        when completionBlock: @escaping () -> Void,
+                        file: StaticString = #filePath, line: UInt = #line) {
         var capturedResults = [GraphRepliesMaker.Result]()
         
         sut.createGraphFrom(whisper: whisper) { result in
@@ -63,7 +89,7 @@ class GraphRepliesMakerTests: XCTestCase {
         
         completionBlock()
         
-        XCTAssertEqual(capturedResults, [result])
+        XCTAssertEqual(capturedResults, [result], file: file, line: line)
     }
     
     private func makeSUT() -> (sut: GraphRepliesMaker,
@@ -86,6 +112,10 @@ class GraphRepliesMakerTests: XCTestCase {
         
         func completeWith(error: ReplyThreadLoaderError, at index: Int = 0) {
             messages[index].completion(.failure(error))
+        }
+        
+        func completesWith(whispers: [Whisper], at index: Int = 0) {
+            messages[index].completion(.success(whispers))
         }
     }
 }
