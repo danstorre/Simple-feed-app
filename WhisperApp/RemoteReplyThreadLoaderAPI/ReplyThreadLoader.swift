@@ -7,7 +7,7 @@ public enum ReplyThreadLoaderError {
 }
 
 public enum ReplyThreadLoaderResult {
-    case success([RemoteWhisperReply])
+    case success([Whisper])
     case failure(ReplyThreadLoaderError)
 }
 

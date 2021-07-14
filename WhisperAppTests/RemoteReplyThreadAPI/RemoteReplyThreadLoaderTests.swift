@@ -92,25 +92,22 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
     func test_load_deliversRepliesOn200HTTPResponseWithValidJSON() throws {
         let (sut, client) = makeSUT()
         
-        let whisperReply1 = RemoteWhisperReply(id: "id",
-                                               heartCount: 2,
-                                               replies: 2,
-                                               text: "a text",
-                                               imageURL: URL(string: "http://a-URL-1.com")!)
+        let whisperReply1 = createWhisper(id: "id",
+                                         heartCount: 2,
+                                         replies: 2,
+                                         text: "a text",
+                                         imageURL: URL(string: "http://a-URL-1.com")!)
         
-        let jsonWhisper1 = createJSONObjectFrom(reply: whisperReply1)
+        let whisperReply2 = createWhisper(id: "id2",
+                                          heartCount: 4,
+                                          replies: 4,
+                                          text: "a second text",
+                                          imageURL: URL(string: "http://a-URL-2.com")!)
         
-        let whisperReply2 = RemoteWhisperReply(id: "id2",
-                                               heartCount: 4,
-                                               replies: 4,
-                                               text: "a second text",
-                                               imageURL: URL(string: "http://a-URL-2.com")!)
+        let whisperReplies = [whisperReply1, whisperReply2]
+        let jsonReplies = whisperReplies.map(createJSONObjectFrom)
         
-        let jsonWhisper2 = createJSONObjectFrom(reply: whisperReply2)
-        
-        let whisperReplies = [whisperReply1, whisperReply2].map(createWhisper)
-        
-        let json = try createJSON(from: [jsonWhisper1, jsonWhisper2])
+        let json = try createJSON(from: jsonReplies)
     
         expect(result: .success(whisperReplies), from: sut) {
             client.completeWith(code: 200, data: json)
@@ -139,21 +136,27 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
     }
     
     // MARK:- Helpers
-    private func createWhisper(from remoteWhisper: RemoteWhisperReply) -> Whisper {
-        Whisper(description: remoteWhisper.text,
-                heartCount: remoteWhisper.heartCount,
-                replyCount: remoteWhisper.replies,
-                image: remoteWhisper.imageURL,
-                wildCardID: remoteWhisper.id)
+    private func createWhisper(
+        id: String,
+        heartCount: Int,
+        replies: Int,
+        text: String,
+        imageURL: URL
+    ) -> Whisper {
+        Whisper(description: text,
+                heartCount: heartCount,
+                replyCount: replies,
+                image: imageURL,
+                wildCardID: id)
     }
 
-    private func createJSONObjectFrom(reply: RemoteWhisperReply) -> [String: Any] {
+    private func createJSONObjectFrom(whisper: Whisper) -> [String: Any] {
         [
-            "wid": reply.id,
-            "me2": reply.heartCount,
-            "replies": reply.replies,
-            "text": reply.text,
-            "url": reply.imageURL.absoluteString
+            "wid": whisper.wildCardID,
+            "me2": whisper.heartCount,
+            "replies": whisper.replyCount,
+            "text": whisper.description,
+            "url": whisper.image.absoluteString
         ].compactMapValues { $0 }
     }
     
