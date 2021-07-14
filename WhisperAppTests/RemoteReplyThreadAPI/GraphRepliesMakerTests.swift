@@ -23,21 +23,23 @@ class GraphRepliesMakerTests: XCTestCase {
     func test_createGraph_deliversConnectivityErrorWhenLoaderFailsWithConnectivityError() {
         let (sut, loader) = makeSUT()
         
-        let whisperID = "anID"
-        var capturedResults = [GraphRepliesMaker.Result]()
-        
-        sut.createGraphFrom(whisperID: whisperID) { result in
-            capturedResults.append(result)
-        }
-        
-        loader.completeWith(error: .connectivityError)
-        
-        XCTAssertEqual(capturedResults, [.failure(.connectivityError)])
+        expect(result: .failure(.connectivityError), from: sut, when: {
+            loader.completeWith(error: .connectivityError)
+        })
     }
     
     func test_createGraph_deliversInvalidDataWhenLoaderFailsWithInvalidData() {
         let (sut, loader) = makeSUT()
         
+        expect(result: .failure(.invalidData), from: sut, when: {
+            loader.completeWith(error: .invalidData)
+        })
+    }
+    
+    // MARK: - helpers
+    private func expect(result: GraphRepliesMaker.Result,
+                        from sut: GraphRepliesMaker,
+                        when completionBlock: @escaping () -> Void) {
         let whisperID = "anID"
         var capturedResults = [GraphRepliesMaker.Result]()
         
@@ -45,12 +47,11 @@ class GraphRepliesMakerTests: XCTestCase {
             capturedResults.append(result)
         }
         
-        loader.completeWith(error: .invalidData)
+        completionBlock()
         
-        XCTAssertEqual(capturedResults, [.failure(.invalidData)])
+        XCTAssertEqual(capturedResults, [result])
     }
     
-    // MARK: - helpers
     private func makeSUT() -> (sut: GraphRepliesMaker,
                                loader: ReplyThreadLoaderSpy) {
         let loader = ReplyThreadLoaderSpy()
