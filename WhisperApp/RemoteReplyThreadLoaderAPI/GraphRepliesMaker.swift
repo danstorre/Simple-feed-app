@@ -18,9 +18,9 @@ public final class GraphRepliesMaker {
         self.loader = loader
     }
     
-    public func createGraphFrom(whisperID: String,
+    public func createGraphFrom(whisper: Whisper,
                                 completion: @escaping (Result) -> Void = { _ in }) {
-        loader.load(repliesFrom: whisperID) { result in
+        loader.load(repliesFrom: whisper.wildCardID) { result in
             switch result {
             case let .failure(error):
                 switch error {

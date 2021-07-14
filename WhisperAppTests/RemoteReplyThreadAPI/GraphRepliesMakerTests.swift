@@ -14,10 +14,10 @@ class GraphRepliesMakerTests: XCTestCase {
     func test_createGraph_loadsRepliesFromGivenWhisperId() {
         let (sut, loader) = makeSUT()
         
-        let whisperID = "anID"
-        sut.createGraphFrom(whisperID: whisperID)
+        let whisper = createWhisper(wildCardID: "ID")
+        sut.createGraphFrom(whisper: whisper)
         
-        XCTAssertEqual(loader.requestedIds, [whisperID])
+        XCTAssertEqual(loader.requestedIds, [whisper.wildCardID])
     }
     
     func test_createGraph_deliversConnectivityErrorWhenLoaderFailsWithConnectivityError() {
@@ -37,13 +37,27 @@ class GraphRepliesMakerTests: XCTestCase {
     }
     
     // MARK: - helpers
+    private func createWhisper(
+        description: String = "a whisper description",
+        heartCount: Int = 2,
+        replyCount: Int = 4,
+        image: URL = URL(string: "http://a-url.com")!,
+        wildCardID: String = "1"
+    ) -> Whisper {
+        Whisper(description: "a whisper description",
+                heartCount: 2,
+                replyCount: 4,
+                image: URL(string: "http://a-url.com")!,
+                wildCardID: "1")
+    }
+    
     private func expect(result: GraphRepliesMaker.Result,
                         from sut: GraphRepliesMaker,
                         when completionBlock: @escaping () -> Void) {
-        let whisperID = "anID"
+        let whisper = createWhisper()
         var capturedResults = [GraphRepliesMaker.Result]()
         
-        sut.createGraphFrom(whisperID: whisperID) { result in
+        sut.createGraphFrom(whisper: whisper) { result in
             capturedResults.append(result)
         }
         
