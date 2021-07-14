@@ -5,6 +5,7 @@ public final class GraphRepliesMaker {
     private let loader: ReplyThreadLoader
     
     public enum Result: Equatable {
+        case success
         case failure(Error)
     }
     
