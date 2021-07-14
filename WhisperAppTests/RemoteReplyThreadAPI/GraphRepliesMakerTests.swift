@@ -11,7 +11,7 @@ class GraphRepliesMakerTests: XCTestCase {
         XCTAssertEqual(loader.requestedIds, [])
     }
     
-    func test_createGraph_requestsRepliesFromGivenWhisperId() {
+    func test_createGraph_loadsRepliesFromGivenWhisperId() {
         let (sut, loader) = makeSUT()
         
         let whisperID = "anID"
