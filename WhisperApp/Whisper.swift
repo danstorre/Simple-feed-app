@@ -2,11 +2,11 @@
 import Foundation
 
 public struct Whisper: Equatable {
-    private let description: String
-    private let heartCount: Int
-    private let replyCount: Int
-    private let image: URL
-    private let wildCardID: String
+    public let description: String
+    public let heartCount: Int
+    public let replyCount: Int
+    public let image: URL
+    public let wildCardID: String
     
     public var replies: [Whisper]?
     
