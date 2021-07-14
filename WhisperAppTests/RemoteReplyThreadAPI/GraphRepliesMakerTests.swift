@@ -20,6 +20,21 @@ class GraphRepliesMakerTests: XCTestCase {
         XCTAssertEqual(loader.requestedIds, [whisperID])
     }
     
+    func test_createGraph_deliversConnectivityErrorWhenLoaderFailsWithConnectivityError() {
+        let (sut, loader) = makeSUT()
+        
+        let whisperID = "anID"
+        var capturedResults = [GraphRepliesMaker.Result]()
+        
+        sut.createGraphFrom(whisperID: whisperID) { result in
+            capturedResults.append(result)
+        }
+        
+        loader.completeWith(error: NSError(domain: "network error", code: 0))
+        
+        XCTAssertEqual(capturedResults, [.failure(.connectivityError)])
+    }
+    
     // MARK: - helpers
     private func makeSUT() -> (sut: GraphRepliesMaker,
                                loader: ReplyThreadLoaderSpy) {
@@ -29,14 +44,18 @@ class GraphRepliesMakerTests: XCTestCase {
     }
     
     private class ReplyThreadLoaderSpy: ReplyThreadLoader {
-        var messages: [(id: String, completion: ([RemoteWhisperReply]) -> Void)] = []
+        var messages: [(id: String, completion: (ReplyThreadLoaderResult) -> Void)] = []
         
         var requestedIds: [String] {
             messages.map { $0.id }
         }
         
-        func load(repliesFrom id: String, completion: @escaping ([RemoteWhisperReply]) -> Void) {
+        func load(repliesFrom id: String, completion: @escaping (ReplyThreadLoaderResult) -> Void) {
             messages.append((id, completion))
+        }
+        
+        func completeWith(error: Error, at index: Int = 0) {
+            messages[index].completion(.failure(error))
         }
     }
 }

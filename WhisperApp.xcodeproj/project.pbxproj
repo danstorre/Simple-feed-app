@@ -118,8 +118,8 @@
 		1AD96771269BD5E4002EEF2D /* RemoteReplyThreadLoaderAPI */ = {
 			isa = PBXGroup;
 			children = (
-				1AD96772269BD5F8002EEF2D /* RemoteReplyThreadLoader.swift */,
 				1AD96774269BD619002EEF2D /* HTTPClient.swift */,
+				1AD96772269BD5F8002EEF2D /* RemoteReplyThreadLoader.swift */,
 				1A54637B269E2CC1006A925E /* RemoteReplyThreadMapper.swift */,
 				1A54637D269E2D06006A925E /* RemoteWhisperReply.swift */,
 				1A546382269E44B4006A925E /* GraphRepliesMaker.swift */,
