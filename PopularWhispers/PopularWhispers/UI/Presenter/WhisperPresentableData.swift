@@ -9,7 +9,7 @@ struct WhisperPresentableData: Identifiable {
     let id: String
 }
 
-class PopularWhisperVM: ObservableObject {
+class PopularReplyThreadVM: ObservableObject {
     private let whisper: Whisper
     private let loader: PopularReplyThreadLoader
     @Published var replies: [WhisperPresentableData] = []

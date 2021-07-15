@@ -17,7 +17,7 @@ enum CreatePopularThreadView {
                                           wildCardID: "05c6f4b2e1123a3b427cf57c25ce26be41a789")
     
     static func create(from whisper: Whisper = CreatePopularThreadView.aWhisper) -> PopularThreadFromWhisper {
-        let popularRepliesVM: PopularWhisperVM = PopularWhisperVM(loader: FactoryPopularReplyThreadLoader.create(),
+        let popularRepliesVM: PopularReplyThreadVM = PopularReplyThreadVM(loader: FactoryPopularReplyThreadLoader.create(),
                                                                   whisper: CreatePopularThreadView.aWhisper)
         
         return PopularThreadFromWhisper(title: "Popular Reply Thread",

@@ -4,7 +4,7 @@ import WhisperApp
 
 struct PopularThreadFromWhisper: View {
     let title: String
-    @ObservedObject var viewModel: PopularWhisperVM
+    @ObservedObject var viewModel: PopularReplyThreadVM
     
     var body: some View {
         ScrollView {
@@ -24,7 +24,7 @@ struct PopularThreadFromWhisper: View {
 
 struct PopularThreadFromWhisper_Previews: PreviewProvider {
     
-    static var vm: PopularWhisperVM = PopularWhisperVM(loader: MockReplyThreadLoaderAdapter(),
+    static var vm: PopularReplyThreadVM = PopularReplyThreadVM(loader: MockReplyThreadLoaderAdapter(),
                                                        whisper: Whisper(description: "a text",
                                                                         heartCount: 1,
                                                                         replyCount: 1,
