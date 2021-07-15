@@ -14,6 +14,8 @@
 		1A546381269E38DA006A925E /* GraphRepliesMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A546380269E38DA006A925E /* GraphRepliesMakerTests.swift */; };
 		1A546383269E44B4006A925E /* GraphRepliesMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A546382269E44B4006A925E /* GraphRepliesMaker.swift */; };
 		1A546385269E452A006A925E /* ReplyThreadLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A546384269E452A006A925E /* ReplyThreadLoader.swift */; };
+		1A54638B26A06D3F006A925E /* PopularReplyThreadMakerFromGraphTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A54638A26A06D3F006A925E /* PopularReplyThreadMakerFromGraphTest.swift */; };
+		1A54638D26A06D67006A925E /* PopularReplyThreadMakerFromGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A54638C26A06D67006A925E /* PopularReplyThreadMakerFromGraph.swift */; };
 		1AD9676E269BD388002EEF2D /* RemoteReplyThreadLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD9676D269BD388002EEF2D /* RemoteReplyThreadLoaderTests.swift */; };
 		1AD96773269BD5F8002EEF2D /* RemoteReplyThreadLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD96772269BD5F8002EEF2D /* RemoteReplyThreadLoader.swift */; };
 		1AD96775269BD619002EEF2D /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD96774269BD619002EEF2D /* HTTPClient.swift */; };
@@ -40,6 +42,8 @@
 		1A546380269E38DA006A925E /* GraphRepliesMakerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphRepliesMakerTests.swift; sourceTree = "<group>"; };
 		1A546382269E44B4006A925E /* GraphRepliesMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphRepliesMaker.swift; sourceTree = "<group>"; };
 		1A546384269E452A006A925E /* ReplyThreadLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyThreadLoader.swift; sourceTree = "<group>"; };
+		1A54638A26A06D3F006A925E /* PopularReplyThreadMakerFromGraphTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularReplyThreadMakerFromGraphTest.swift; sourceTree = "<group>"; };
+		1A54638C26A06D67006A925E /* PopularReplyThreadMakerFromGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularReplyThreadMakerFromGraph.swift; sourceTree = "<group>"; };
 		1AD9676D269BD388002EEF2D /* RemoteReplyThreadLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteReplyThreadLoaderTests.swift; sourceTree = "<group>"; };
 		1AD9676F269BD49B002EEF2D /* WhisperAppTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WhisperAppTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		1AD96772269BD5F8002EEF2D /* RemoteReplyThreadLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteReplyThreadLoader.swift; sourceTree = "<group>"; };
@@ -107,6 +111,7 @@
 		1A54637F269E37B0006A925E /* RemoteReplyThreadAPI */ = {
 			isa = PBXGroup;
 			children = (
+				1A54638A26A06D3F006A925E /* PopularReplyThreadMakerFromGraphTest.swift */,
 				1AD9676D269BD388002EEF2D /* RemoteReplyThreadLoaderTests.swift */,
 				1A546380269E38DA006A925E /* GraphRepliesMakerTests.swift */,
 			);
@@ -123,19 +128,20 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		1A54638926A06AC0006A925E /* RepliesMaker */ = {
+		1A54638926A06AC0006A925E /* Replies */ = {
 			isa = PBXGroup;
 			children = (
 				1A546382269E44B4006A925E /* GraphRepliesMaker.swift */,
+				1A54638C26A06D67006A925E /* PopularReplyThreadMakerFromGraph.swift */,
 			);
-			path = RepliesMaker;
+			path = Replies;
 			sourceTree = "<group>";
 		};
 		1AD96771269BD5E4002EEF2D /* RemoteReplyThreadLoaderAPI */ = {
 			isa = PBXGroup;
 			children = (
 				1A546384269E452A006A925E /* ReplyThreadLoader.swift */,
-				1A54638926A06AC0006A925E /* RepliesMaker */,
+				1A54638926A06AC0006A925E /* Replies */,
 				1A54638626A06A2B006A925E /* Network */,
 			);
 			path = RemoteReplyThreadLoaderAPI;
@@ -255,6 +261,7 @@
 				1AD96775269BD619002EEF2D /* HTTPClient.swift in Sources */,
 				1A546383269E44B4006A925E /* GraphRepliesMaker.swift in Sources */,
 				1A546385269E452A006A925E /* ReplyThreadLoader.swift in Sources */,
+				1A54638D26A06D67006A925E /* PopularReplyThreadMakerFromGraph.swift in Sources */,
 				1A54637C269E2CC1006A925E /* RemoteReplyThreadMapper.swift in Sources */,
 				1AD96773269BD5F8002EEF2D /* RemoteReplyThreadLoader.swift in Sources */,
 			);
@@ -264,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A54638B26A06D3F006A925E /* PopularReplyThreadMakerFromGraphTest.swift in Sources */,
 				1A546381269E38DA006A925E /* GraphRepliesMakerTests.swift in Sources */,
 				1AD9676E269BD388002EEF2D /* RemoteReplyThreadLoaderTests.swift in Sources */,
 			);
