@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A00037126A0A15300F42EC9 /* PopularThreadHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00037026A0A15300F42EC9 /* PopularThreadHeader.swift */; };
+		1A00037326A0A30C00F42EC9 /* WhisperReplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00037226A0A30C00F42EC9 /* WhisperReplyView.swift */; };
 		1A54641526A079EE006A925E /* PopularWhispersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A54641426A079EE006A925E /* PopularWhispersApp.swift */; };
 		1A54641726A079EE006A925E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A54641626A079EE006A925E /* ContentView.swift */; };
 		1A54641926A079EF006A925E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A54641826A079EF006A925E /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		1A00037026A0A15300F42EC9 /* PopularThreadHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularThreadHeader.swift; sourceTree = "<group>"; };
+		1A00037226A0A30C00F42EC9 /* WhisperReplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhisperReplyView.swift; sourceTree = "<group>"; };
 		1A54641126A079EE006A925E /* PopularWhispers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopularWhispers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A54641426A079EE006A925E /* PopularWhispersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularWhispersApp.swift; sourceTree = "<group>"; };
 		1A54641626A079EE006A925E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			children = (
 				1A54646D26A095E6006A925E /* PopularThreadFromWhisper.swift */,
 				1A00037026A0A15300F42EC9 /* PopularThreadHeader.swift */,
+				1A00037226A0A30C00F42EC9 /* WhisperReplyView.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				1A54641726A079EE006A925E /* ContentView.swift in Sources */,
 				1A54646E26A095E6006A925E /* PopularThreadFromWhisper.swift in Sources */,
 				1A54641526A079EE006A925E /* PopularWhispersApp.swift in Sources */,
+				1A00037326A0A30C00F42EC9 /* WhisperReplyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

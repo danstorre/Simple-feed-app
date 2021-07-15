@@ -14,21 +14,10 @@ struct PopularThreadFromWhisper: View {
     var body: some View {
         VStack {
             PopularThreadHeader(title: title)
-            VStack {
-                ForEach(whispersPresentable, id:\.self) { whisper in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text("Heart count: \(whisper.heartCount)")
-                            Text(whisper.description)
-                        }
-                        Spacer()
-                    }
-                    .padding(.vertical, 10.0)
-                    Rectangle()
-                        .frame(height: 1.0)
-                }
-                Spacer()
-            }.padding()
+            ForEach(whispersPresentable, id:\.self) { whisper in
+                WhisperReplyView(whisper: whisper)
+            }
+            Spacer()
         }
     }
 }
