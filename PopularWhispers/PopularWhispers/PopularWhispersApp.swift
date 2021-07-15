@@ -59,45 +59,31 @@ class ReplyThreadLoaderAdapter: PopularReplyThreadLoader {
     }
 }
 
-class PopularWhisperVM {
-    let loader: PopularReplyThreadLoader
-    var replies: [Whisper] = []
-    
-    init(loader: PopularReplyThreadLoader) {
-        self.loader = loader
+
+enum FactoryPopularReplyThreadLoader {
+    static func create() -> PopularReplyThreadLoader {
+        let prodUrL = URL(string: "http://prod.whisper.sh/whispers/replies")!
+        return ReplyThreadLoaderAdapter(remoteReplyFromWhisperAPI: RemoteReplyLoaderAdapter(remote: RemoteReplyLoader(url: prodUrL, client: URLSession.shared)))
     }
-    
-    func loadPopularReply(from whisper: Whisper) {
-        loader.loadPopularReplyThread(from: whisper) { result in
-            switch result {
-            case let .success(replies):
-                self.replies = replies
-            case let .failure(error):
-                print(error.localizedDescription)
-            }
-        }
+}
+
+enum CreatePopularThreadView {
+    static func create() -> PopularThreadFromWhisper {
+        let popularRepliesVM: PopularWhisperVM = PopularWhisperVM(loader: FactoryPopularReplyThreadLoader.create())
+        
+        return PopularThreadFromWhisper(title: "Popular Reply Thread",
+                                        viewModel: popularRepliesVM)
     }
 }
 
 @main
 struct PopularWhispersApp: App {
-    @State var popularRepliesVM: PopularWhisperVM!
-    
-    static let popularThreadURL = URL(string: "http://prod.whisper.sh/whispers/replies")!
-
     var body: some Scene {
-        let popularWhispersAPI = RemoteReplyLoader(url: Self.popularThreadURL, client: URLSession.shared)
-        let remoteAdapter = RemoteReplyLoaderAdapter(remote: popularWhispersAPI)
-        let replyThreadLoader = ReplyThreadLoaderAdapter(remoteReplyFromWhisperAPI: remoteAdapter)
-        
-
         WindowGroup {
-            PopularThreadFromWhisper(title: "Popular Reply Thread",
-                                     whispers: [WhisperPresentableData(description: "a text", heartCount: "1", image: nil)])
+            CreatePopularThreadView.create()
         }
     }
 }
-
 
 extension URLSession: HTTPClient {
     public func getDataFrom(url: URL, completion: @escaping (HTTPClientResult) -> Void) {
