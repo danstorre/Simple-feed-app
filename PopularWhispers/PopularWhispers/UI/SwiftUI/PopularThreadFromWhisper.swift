@@ -1,12 +1,6 @@
 
 import SwiftUI
 
-struct WhisperPresentableData: Hashable {
-    let description: String
-    let heartCount: String
-    let image: UIImage?
-}
-
 struct PopularThreadFromWhisper: View {
     let title: String
     let whispersPresentable: [WhisperPresentableData]
