@@ -89,6 +89,24 @@ class GraphRepliesMakerTests: XCTestCase {
         })
     }
     
+    func test_createGraph_doesntDeliverResultWhenDeallocated() {
+        let loader = ReplyThreadLoaderSpy()
+        var sut: GraphRepliesMaker? = GraphRepliesMaker(loader: loader)
+        
+        var capturedResults = [GraphRepliesMaker.Result]()
+        sut?.createGraphFrom(
+            whisper: createWhisper(),
+            completion: { result in
+                capturedResults.append(result)
+            })
+        
+        sut = nil
+        
+        loader.completeWith(error: .connectivityError)
+        
+        XCTAssertTrue(capturedResults.isEmpty)
+    }
+    
     // MARK: - helpers
     private func createWhisper(
         description: String = "a whisper description",
