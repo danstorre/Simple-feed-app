@@ -5,7 +5,7 @@ public final class GraphRepliesMaker {
     private let loader: ReplyThreadLoader
     
     public enum Result: Equatable {
-        case success(Whisper)
+        case success(NodeWhisper)
         case failure(Error)
     }
     
@@ -20,13 +20,46 @@ public final class GraphRepliesMaker {
     
     public func createGraphFrom(whisper: Whisper,
                                 completion: @escaping (Result) -> Void = { _ in }) {
-        loader.load(repliesFrom: whisper.wildCardID) { result in
+        let whisperNodeRoot = NodeWhisper(whisper: whisper)
+        let queueOperations = Queue<NodeWhisper>(items: [whisperNodeRoot])
+        createGraphFrom(queue: queueOperations,
+                        root: whisperNodeRoot,
+                        completion: completion)
+    }
+    
+    private func createGraphFrom(queue: Queue<NodeWhisper>,
+                                 root: NodeWhisper,
+                                 completion: @escaping (Result) -> Void) {
+        var auxQueue = queue
+        
+        guard let current = auxQueue.dequeue() else {
+            completion(.success(root))
+            return
+        }
+        
+        loader.load(repliesFrom: current.whisper.wildCardID) { result in
             switch result {
             case let .success(replyWhispers):
-                var whisperRoot = whisper
-                whisperRoot.replies = replyWhispers
-                completion(.success(whisperRoot))
-            
+                guard !replyWhispers.isEmpty else {
+                    _ = auxQueue.dequeue()
+                    self.createGraphFrom(queue: auxQueue,
+                                         root: root,
+                                         completion: completion)
+                    return
+                }
+                
+                let replyNodes = replyWhispers.map { NodeWhisper(whisper: $0) }
+                
+                current.replies = replyNodes
+                
+                _ = auxQueue.dequeue()
+                for whisperNode in replyNodes {
+                    auxQueue.enqueue(element: whisperNode)
+                }
+                
+                self.createGraphFrom(queue: auxQueue,
+                                     root: root,
+                                     completion: completion)
             case let .failure(error):
                 switch error {
                 case .connectivityError:
@@ -35,6 +68,43 @@ public final class GraphRepliesMaker {
                     completion(.failure(.invalidData))
                 }
             }
+        }
+    }
+}
+
+public class NodeWhisper: Equatable {
+    public let whisper: Whisper
+    public var replies: [NodeWhisper]?
+    
+    public init(whisper: Whisper, replies: [Whisper]? = nil) {
+        self.whisper = whisper
+        self.replies = replies?.map { NodeWhisper(whisper: $0) }
+    }
+    
+    public static func == (lhs: NodeWhisper, rhs: NodeWhisper) -> Bool {
+        return lhs.whisper.wildCardID == rhs.whisper.wildCardID
+    }
+}
+
+private struct Queue<T>{
+    
+    var items:[T] = []
+    
+    mutating func enqueue(element: T)
+    {
+        items.append(element)
+    }
+    
+    mutating func dequeue() -> T?
+    {
+        
+        if items.isEmpty {
+            return nil
+        }
+        else{
+            let tempElement = items.first
+            items.remove(at: 0)
+            return tempElement
         }
     }
 }

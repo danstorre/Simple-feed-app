@@ -45,15 +45,47 @@ class GraphRepliesMakerTests: XCTestCase {
 
         let whisperRoot = createWhisper(wildCardID: "0")
         
-        let whisperResult = Whisper(description: whisperRoot.description,
-                                    heartCount: whisperRoot.heartCount,
-                                    replyCount: whisperRoot.replyCount,
-                                    image: whisperRoot.image,
-                                    wildCardID: whisperRoot.wildCardID,
-                                    replies: [whisperReply1, whisperReply2])
+        let whisperResultRoot = NodeWhisper(whisper: whisperRoot)
+        whisperResultRoot.replies = [NodeWhisper(whisper: whisperReply1), NodeWhisper(whisper: whisperReply2)]
+        
 
-        expect(result: .success(whisperResult), from: sut, and: whisperRoot, when: {
+        expect(result: .success(whisperResultRoot), from: sut, and: whisperRoot, when: {
             loader.completesWith(whispers: [whisperReply1, whisperReply2])
+            loader.completesWith(whispers: [])
+            loader.completesWith(whispers: [])
+        })
+    }
+    
+    func test_createGraph_deliversCompleteGraphWhenRepliesHaveReplies() {
+        let (sut, loader) = makeSUT()
+
+        let whisperReply1a = createWhisper(wildCardID: "1-a")
+        let whisperReply1b = createWhisper(wildCardID: "1-b")
+
+        let whisperReply1 = createWhisper(wildCardID: "1")
+        
+        let whisperNode1 = NodeWhisper(whisper: whisperReply1,
+                                       replies: [whisperReply1a, whisperReply1b])
+
+        let whisperReply2a = createWhisper(wildCardID: "2-a")
+        let whisperReply2b = createWhisper(wildCardID: "2-b")
+
+        let whisperReply2 = createWhisper(wildCardID: "2")
+        let whisperNode2 = NodeWhisper(whisper: whisperReply2,
+                                       replies: [whisperReply2a, whisperReply2b])
+        
+        let whisperRoot = createWhisper(wildCardID: "0")
+        let whisperRootResult = NodeWhisper(whisper: whisperRoot)
+        whisperRootResult.replies = [whisperNode1, whisperNode2]
+
+        expect(result: .success(whisperRootResult), from: sut, and: whisperRoot, when: {
+            loader.completesWith(whispers: [whisperReply1, whisperReply2])
+            loader.completesWith(whispers: [whisperReply1a, whisperReply1b])
+            loader.completesWith(whispers: [whisperReply2a, whisperReply2b])
+            loader.completesWith(whispers: [])
+            loader.completesWith(whispers: [])
+            loader.completesWith(whispers: [])
+            loader.completesWith(whispers: [])
         })
     }
     
@@ -63,13 +95,15 @@ class GraphRepliesMakerTests: XCTestCase {
         heartCount: Int = 2,
         replyCount: Int = 4,
         image: URL = URL(string: "http://a-url.com")!,
-        wildCardID: String = "1"
+        wildCardID: String = "1",
+        replies: [Whisper]? = nil
     ) -> Whisper {
-        Whisper(description: "a whisper description",
-                heartCount: 2,
-                replyCount: 4,
-                image: URL(string: "http://a-url.com")!,
-                wildCardID: "1")
+        Whisper(description: description,
+                heartCount: heartCount,
+                replyCount: replyCount,
+                image: image,
+                wildCardID: wildCardID,
+                replies: replies)
     }
     
     private func expect(result: GraphRepliesMaker.Result,
