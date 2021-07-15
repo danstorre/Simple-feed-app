@@ -13,6 +13,8 @@
 		1A54641C26A079EF006A925E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A54641B26A079EF006A925E /* Preview Assets.xcassets */; };
 		1A54642726A079EF006A925E /* PopularWhispersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A54642626A079EF006A925E /* PopularWhispersTests.swift */; };
 		1A54643226A079EF006A925E /* PopularWhispersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A54643126A079EF006A925E /* PopularWhispersUITests.swift */; };
+		1A54646826A07F3E006A925E /* WhisperApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A54646726A07F3E006A925E /* WhisperApp.framework */; };
+		1A54646926A07F3E006A925E /* WhisperApp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A54646726A07F3E006A925E /* WhisperApp.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +34,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		1A54646A26A07F3E006A925E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1A54646926A07F3E006A925E /* WhisperApp.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1A54641126A079EE006A925E /* PopularWhispers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopularWhispers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A54641426A079EE006A925E /* PopularWhispersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularWhispersApp.swift; sourceTree = "<group>"; };
@@ -45,6 +61,7 @@
 		1A54642D26A079EF006A925E /* PopularWhispersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopularWhispersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A54643126A079EF006A925E /* PopularWhispersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularWhispersUITests.swift; sourceTree = "<group>"; };
 		1A54643326A079EF006A925E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A54646726A07F3E006A925E /* WhisperApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WhisperApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A54646826A07F3E006A925E /* WhisperApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +97,7 @@
 				1A54642526A079EF006A925E /* PopularWhispersTests */,
 				1A54643026A079EF006A925E /* PopularWhispersUITests */,
 				1A54641226A079EE006A925E /* Products */,
+				1A54646626A07F3E006A925E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +149,14 @@
 			path = PopularWhispersUITests;
 			sourceTree = "<group>";
 		};
+		1A54646626A07F3E006A925E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1A54646726A07F3E006A925E /* WhisperApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -140,6 +167,7 @@
 				1A54640D26A079EE006A925E /* Sources */,
 				1A54640E26A079EE006A925E /* Frameworks */,
 				1A54640F26A079EE006A925E /* Resources */,
+				1A54646A26A07F3E006A925E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
