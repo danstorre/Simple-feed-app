@@ -126,12 +126,26 @@ class GraphRepliesMakerTests: XCTestCase {
         XCTAssertEqual(capturedResults, [result], file: file, line: line)
     }
     
-    private func makeSUT() -> (sut: GraphRepliesMaker,
+    private func makeSUT(file: StaticString = #filePath,
+                         line: UInt = #line) -> (sut: GraphRepliesMaker,
                                loader: ReplyThreadLoaderSpy) {
         let loader = ReplyThreadLoaderSpy()
         let sut = GraphRepliesMaker(loader: loader)
+        
+        checkMemoryLeak(on: loader, file: file, line: line)
+        checkMemoryLeak(on: sut, file: file, line: line)
+        
         return (sut, loader)
     }
+    
+    private func checkMemoryLeak(on instance: AnyObject,
+                                 file: StaticString = #filePath, line: UInt = #line) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance, "instance should be nil - potential memory leak.",
+                         file: file, line: line)
+        }
+    }
+    
     
     private class ReplyThreadLoaderSpy: ReplyThreadLoader {
         var messages: [(id: String, completion: (ReplyThreadLoaderResult) -> Void)] = []

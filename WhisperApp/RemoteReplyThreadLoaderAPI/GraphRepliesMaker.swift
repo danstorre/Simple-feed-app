@@ -37,7 +37,8 @@ public final class GraphRepliesMaker {
             return
         }
         
-        loader.load(repliesFrom: current.whisper.wildCardID) { result in
+        loader.load(repliesFrom: current.whisper.wildCardID) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case let .success(replyWhispers):
                 guard !replyWhispers.isEmpty else {
