@@ -194,18 +194,18 @@ class GraphRepliesMakerTests: XCTestCase {
     }
     
     
-    private class ReplyThreadLoaderSpy: ReplyThreadLoader {
-        var messages: [(id: String, completion: (ReplyThreadLoaderResult) -> Void)] = []
+    private class ReplyThreadLoaderSpy: RepliesLoader {
+        var messages: [(id: String, completion: (RepliesLoaderResult) -> Void)] = []
         
         var requestedIds: [String] {
             messages.map { $0.id }
         }
         
-        func load(repliesFrom id: String, completion: @escaping (ReplyThreadLoaderResult) -> Void) {
+        func load(repliesFrom id: String, completion: @escaping (RepliesLoaderResult) -> Void) {
             messages.append((id, completion))
         }
         
-        func completeWith(error: ReplyThreadLoaderError, at index: Int = 0) {
+        func completeWith(error: RepliesLoaderLoaderError, at index: Int = 0) {
             messages[index].completion(.failure(error))
         }
         

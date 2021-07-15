@@ -1,12 +1,12 @@
 
 import Foundation
 
-enum ResultReplyThread {
+public enum ResultReplyThread {
     case success([Whisper])
     case failure(Error)
 }
 
-protocol PopularReplyThreadLoader {
+public protocol PopularReplyThreadLoader {
     func loadPopularReplyThread(from: Whisper,
                                 completion: @escaping (ResultReplyThread) -> Void)
 }

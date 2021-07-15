@@ -117,10 +117,10 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
     func test_load_doesntDeliverRepliesWhenDeallocated() throws {
         let url = URL(string: "http://a-url.com")!
         let client = HTTPClientSpy()
-        var sut: RemoteReplyThreadLoader? = RemoteReplyThreadLoader(url: url,
+        var sut: RemoteReplyLoader? = RemoteReplyLoader(url: url,
                                                                     client: client)
         
-        var capturedResults = [RemoteReplyThreadLoader.Result]()
+        var capturedResults = [RemoteReplyLoader.Result]()
         
         sut?.load(from: "anWhisperID",
                   completion: { result in
@@ -167,13 +167,13 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
     }
     
     private func expect(
-        result: RemoteReplyThreadLoader.Result,
-        from sut: RemoteReplyThreadLoader,
+        result: RemoteReplyLoader.Result,
+        from sut: RemoteReplyLoader,
         when completion: () -> Void,
         file: StaticString = #filePath,
         line: UInt = #line
     ) {
-        var capturedResults = [RemoteReplyThreadLoader.Result]()
+        var capturedResults = [RemoteReplyLoader.Result]()
         
         loadWith(sut: sut) { result in
             capturedResults.append(result)
@@ -188,8 +188,8 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
     private func makeSUT(
         url: URL = URL(string: "http://a-url.com")!,
         client: HTTPClientSpy = HTTPClientSpy()
-    ) -> (RemoteReplyThreadLoader, HTTPClientSpy) {
-        let sut = RemoteReplyThreadLoader(url: url, client: client)
+    ) -> (RemoteReplyLoader, HTTPClientSpy) {
+        let sut = RemoteReplyLoader(url: url, client: client)
         
         checkForMemoryLeak(instance: sut)
         checkForMemoryLeak(instance: client)
@@ -204,8 +204,8 @@ class RemoteReplyThreadLoaderTests: XCTestCase {
     }
     
     private func loadWith(id whisperId: String = "whisperID",
-                          sut: RemoteReplyThreadLoader,
-                          completion: @escaping (RemoteReplyThreadLoader.Result) -> Void) {
+                          sut: RemoteReplyLoader,
+                          completion: @escaping (RemoteReplyLoader.Result) -> Void) {
         sut.load(from: whisperId, completion: completion)
     }
     

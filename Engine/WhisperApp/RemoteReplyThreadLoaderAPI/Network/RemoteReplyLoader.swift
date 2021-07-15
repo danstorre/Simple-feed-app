@@ -1,7 +1,7 @@
 
 import Foundation
 
-public final class RemoteReplyThreadLoader {
+public final class RemoteReplyLoader {
     private let url: URL
     private let client: HTTPClient
     

@@ -12,7 +12,6 @@
 		1A00037626A0A3A000F42EC9 /* WhisperPresentableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00037526A0A3A000F42EC9 /* WhisperPresentableData.swift */; };
 		1A00037926A0A6A800F42EC9 /* PopularWhispersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00037826A0A6A800F42EC9 /* PopularWhispersTests.swift */; };
 		1A54641526A079EE006A925E /* PopularWhispersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A54641426A079EE006A925E /* PopularWhispersApp.swift */; };
-		1A54641726A079EE006A925E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A54641626A079EE006A925E /* ContentView.swift */; };
 		1A54641926A079EF006A925E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A54641826A079EF006A925E /* Assets.xcassets */; };
 		1A54641C26A079EF006A925E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A54641B26A079EF006A925E /* Preview Assets.xcassets */; };
 		1A54646826A07F3E006A925E /* WhisperApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A54646726A07F3E006A925E /* WhisperApp.framework */; };
@@ -52,7 +51,6 @@
 		1A00037826A0A6A800F42EC9 /* PopularWhispersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularWhispersTests.swift; sourceTree = "<group>"; };
 		1A54641126A079EE006A925E /* PopularWhispers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopularWhispers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A54641426A079EE006A925E /* PopularWhispersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularWhispersApp.swift; sourceTree = "<group>"; };
-		1A54641626A079EE006A925E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1A54641826A079EF006A925E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A54641B26A079EF006A925E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1A54641D26A079EF006A925E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -87,6 +85,13 @@
 				1A00037526A0A3A000F42EC9 /* WhisperPresentableData.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		1A00037A26A0B02D00F42EC9 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		1A54640826A079EE006A925E = {
@@ -149,9 +154,9 @@
 		1A54646B26A0959E006A925E /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				1A00037A26A0B02D00F42EC9 /* Main */,
 				1A00037426A0A39100F42EC9 /* Presenter */,
 				1A54646F26A09836006A925E /* SwiftUI */,
-				1A54641626A079EE006A925E /* ContentView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -268,7 +273,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A00037126A0A15300F42EC9 /* PopularThreadHeader.swift in Sources */,
-				1A54641726A079EE006A925E /* ContentView.swift in Sources */,
 				1A54646E26A095E6006A925E /* PopularThreadFromWhisper.swift in Sources */,
 				1A54641526A079EE006A925E /* PopularWhispersApp.swift in Sources */,
 				1A00037626A0A3A000F42EC9 /* WhisperPresentableData.swift in Sources */,

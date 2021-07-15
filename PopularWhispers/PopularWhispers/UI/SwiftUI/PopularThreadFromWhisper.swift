@@ -3,13 +3,13 @@ import SwiftUI
 
 struct PopularThreadFromWhisper: View {
     let title: String
-    let whispersPresentable: [WhisperPresentableData]
+    @State var whispers: [WhisperPresentableData]
     
     var body: some View {
         VStack {
             PopularThreadHeader(title: title)
-            ForEach(whispersPresentable, id:\.self) { whisper in
-                WhisperReplyView(whisper: whisper)
+            ForEach(whispers.indices) { i in
+                WhisperReplyView(whisper: whispers[i])
             }
             Spacer()
         }
@@ -27,9 +27,9 @@ a very large a very large a very large a very large a very large a very large a 
 """, heartCount: "4", image: nil)
             let whispers = [whisper1, whisper2, whisper3]
             
-            PopularThreadFromWhisper(title: "Most Popular Thread", whispersPresentable: whispers)
+            PopularThreadFromWhisper(title: "Most Popular Thread", whispers: whispers)
             
-            PopularThreadFromWhisper(title: "Most Popular Thread", whispersPresentable: whispers)
+            PopularThreadFromWhisper(title: "Most Popular Thread", whispers: whispers)
                 .preferredColorScheme(.dark)
         }
     }

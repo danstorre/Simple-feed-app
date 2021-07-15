@@ -2,7 +2,7 @@
 import Foundation
 
 public final class GraphRepliesMaker {
-    private let loader: ReplyThreadLoader
+    private let loader: RepliesLoader
     
     public enum Result: Equatable {
         case success(NodeWhisper)
@@ -14,7 +14,7 @@ public final class GraphRepliesMaker {
         case invalidData
     }
     
-    public init(loader: ReplyThreadLoader) {
+    public init(loader: RepliesLoader) {
         self.loader = loader
     }
     

@@ -13,7 +13,7 @@ internal final class RemoteReplyThreadLoaderMapper {
         }
     }
     
-    static func map(response: HTTPURLResponse, data: Data) -> RemoteReplyThreadLoader.Result {
+    static func map(response: HTTPURLResponse, data: Data) -> RemoteReplyLoader.Result {
         guard response.statusCode == 200,
               let root = try? JSONDecoder().decode(RemoteWhisperReplyRoot.self, from: data) else {
             return .failure(.invalidData)
