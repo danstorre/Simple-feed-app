@@ -1,5 +1,6 @@
 
 import SwiftUI
+import WhisperApp
 
 struct PopularThreadFromWhisper: View {
     let title: String
@@ -13,12 +14,20 @@ struct PopularThreadFromWhisper: View {
             }
             Spacer()
         }
+        .onAppear {
+            viewModel.loadPopularThread()
+        }
     }
 }
 
 struct PopularThreadFromWhisper_Previews: PreviewProvider {
     
-    static var vm: PopularWhisperVM = PopularWhisperVM(loader: FactoryPopularReplyThreadLoader.create())
+    static var vm: PopularWhisperVM = PopularWhisperVM(loader: FactoryPopularReplyThreadLoader.create(),
+                                                       whisper: Whisper(description: "a text",
+                                                                        heartCount: 1,
+                                                                        replyCount: 1,
+                                                                        image: URL(string: "http://a-url.com")!,
+                                                                        wildCardID: "id"))
     
     init() {
         let whisper1 = WhisperPresentableData(description: "a text 1", heartCount: "2", image: nil, id: "1")

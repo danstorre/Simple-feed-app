@@ -10,14 +10,16 @@ struct WhisperPresentableData: Identifiable {
 }
 
 class PopularWhisperVM: ObservableObject {
+    private let whisper: Whisper
     private let loader: PopularReplyThreadLoader
     @Published var replies: [WhisperPresentableData] = []
     
-    init(loader: PopularReplyThreadLoader) {
+    init(loader: PopularReplyThreadLoader, whisper: Whisper) {
         self.loader = loader
+        self.whisper = whisper
     }
     
-    func loadPopularReply(from whisper: Whisper) {
+    func loadPopularThread() {
         loader.loadPopularReplyThread(from: whisper) { result in
             switch result {
             case let .success(replies):

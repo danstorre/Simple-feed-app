@@ -10,7 +10,9 @@ class RemoteReplyLoaderAdapter: RepliesLoader {
     }
     
     func load(repliesFrom id: String, completion: @escaping (RepliesLoaderResult) -> Void) {
-        remote.load(from: id) { result in
+        remote.load(from: id) { [weak self] result in
+            guard self != nil else { return }
+            
             switch result {
             case let .success(whispers):
                 completion(.success(whispers))
@@ -27,10 +29,12 @@ class RemoteReplyLoaderAdapter: RepliesLoader {
 }
 
 class ReplyThreadLoaderAdapter: PopularReplyThreadLoader {
-    let remoteReplyFromWhisperAPI: RemoteReplyLoaderAdapter
+    private let remoteReplyFromWhisperAPI: RemoteReplyLoaderAdapter
+    private let graphMaker: GraphRepliesMaker
     
     init(remoteReplyFromWhisperAPI: RemoteReplyLoaderAdapter) {
         self.remoteReplyFromWhisperAPI = remoteReplyFromWhisperAPI
+        self.graphMaker = GraphRepliesMaker(loader: self.remoteReplyFromWhisperAPI)
     }
     
     func loadPopularReplyThread(from whisper: Whisper,
@@ -38,9 +42,7 @@ class ReplyThreadLoaderAdapter: PopularReplyThreadLoader {
         DispatchQueue.global().async { [weak self] in
             guard let self = self else { return }
             
-            let graphMaker = GraphRepliesMaker(loader: self.remoteReplyFromWhisperAPI)
-            
-            graphMaker.createGraphFrom(whisper: whisper) { result in
+            self.graphMaker.createGraphFrom(whisper: whisper) { result in
                 switch result {
                 case let .success(nodeWhisper):
                     let topMostPopularThread = PopularReplyThreadMakerFromGraph()
@@ -68,8 +70,15 @@ enum FactoryPopularReplyThreadLoader {
 }
 
 enum CreatePopularThreadView {
-    static func create() -> PopularThreadFromWhisper {
-        let popularRepliesVM: PopularWhisperVM = PopularWhisperVM(loader: FactoryPopularReplyThreadLoader.create())
+    private static let aWhisper = Whisper(description: "1",
+                                          heartCount: 1,
+                                          replyCount: 1,
+                                          image: URL(string: "http://a-url.com")!,
+                                          wildCardID: "05c6f4b2e1123a3b427cf57c25ce26be41a789")
+    
+    static func create(from whisper: Whisper = CreatePopularThreadView.aWhisper) -> PopularThreadFromWhisper {
+        let popularRepliesVM: PopularWhisperVM = PopularWhisperVM(loader: FactoryPopularReplyThreadLoader.create(),
+                                                                  whisper: CreatePopularThreadView.aWhisper)
         
         return PopularThreadFromWhisper(title: "Popular Reply Thread",
                                         viewModel: popularRepliesVM)
