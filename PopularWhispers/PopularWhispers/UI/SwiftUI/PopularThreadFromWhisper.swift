@@ -13,10 +13,7 @@ struct PopularThreadFromWhisper: View {
     
     var body: some View {
         VStack {
-            Text(title)
-                .font(.title)
-                .fontWeight(.bold)
-                .multilineTextAlignment(.leading)
+            PopularThreadHeader(title: title)
             VStack {
                 ForEach(whispersPresentable, id:\.self) { whisper in
                     HStack {
@@ -53,5 +50,16 @@ a very large a very large a very large a very large a very large a very large a 
                 .preferredColorScheme(.dark)
         }
         
+    }
+}
+
+struct PopularThreadHeader: View {
+    let title: String
+    
+    var body: some View {
+        Text(title)
+            .font(.title)
+            .fontWeight(.bold)
+            .multilineTextAlignment(.leading)
     }
 }
