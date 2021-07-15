@@ -10,6 +10,7 @@
 		1A00037126A0A15300F42EC9 /* PopularThreadHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00037026A0A15300F42EC9 /* PopularThreadHeader.swift */; };
 		1A00037326A0A30C00F42EC9 /* WhisperReplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00037226A0A30C00F42EC9 /* WhisperReplyView.swift */; };
 		1A00037626A0A3A000F42EC9 /* WhisperPresentableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00037526A0A3A000F42EC9 /* WhisperPresentableData.swift */; };
+		1A00037926A0A6A800F42EC9 /* PopularWhispersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00037826A0A6A800F42EC9 /* PopularWhispersTests.swift */; };
 		1A54641526A079EE006A925E /* PopularWhispersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A54641426A079EE006A925E /* PopularWhispersApp.swift */; };
 		1A54641726A079EE006A925E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A54641626A079EE006A925E /* ContentView.swift */; };
 		1A54641926A079EF006A925E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A54641826A079EF006A925E /* Assets.xcassets */; };
@@ -47,6 +48,8 @@
 		1A00037026A0A15300F42EC9 /* PopularThreadHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularThreadHeader.swift; sourceTree = "<group>"; };
 		1A00037226A0A30C00F42EC9 /* WhisperReplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhisperReplyView.swift; sourceTree = "<group>"; };
 		1A00037526A0A3A000F42EC9 /* WhisperPresentableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhisperPresentableData.swift; sourceTree = "<group>"; };
+		1A00037726A0A6A800F42EC9 /* PopularWhispersTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PopularWhispersTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		1A00037826A0A6A800F42EC9 /* PopularWhispersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularWhispersTests.swift; sourceTree = "<group>"; };
 		1A54641126A079EE006A925E /* PopularWhispers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopularWhispers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A54641426A079EE006A925E /* PopularWhispersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularWhispersApp.swift; sourceTree = "<group>"; };
 		1A54641626A079EE006A925E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -129,6 +132,8 @@
 			isa = PBXGroup;
 			children = (
 				1A54642826A079EF006A925E /* Info.plist */,
+				1A00037826A0A6A800F42EC9 /* PopularWhispersTests.swift */,
+				1A00037726A0A6A800F42EC9 /* PopularWhispersTests-Bridging-Header.h */,
 			);
 			path = PopularWhispersTests;
 			sourceTree = "<group>";
@@ -214,6 +219,7 @@
 					};
 					1A54642126A079EF006A925E = {
 						CreatedOnToolsVersion = 12.5;
+						LastSwiftMigration = 1250;
 						TestTargetID = 1A54641026A079EE006A925E;
 					};
 				};
@@ -274,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A00037926A0A6A800F42EC9 /* PopularWhispersTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,6 +460,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AEWQUX8MPM;
 				INFOPLIST_FILE = PopularWhispersTests/Info.plist;
@@ -464,6 +472,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = dansteam.PopularWhispersTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PopularWhispersTests/PopularWhispersTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PopularWhispers.app/PopularWhispers";
@@ -475,6 +485,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AEWQUX8MPM;
 				INFOPLIST_FILE = PopularWhispersTests/Info.plist;
@@ -486,6 +497,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = dansteam.PopularWhispersTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PopularWhispersTests/PopularWhispersTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PopularWhispers.app/PopularWhispers";
