@@ -108,9 +108,9 @@
 		1A54641326A079EE006A925E /* PopularWhispers */ = {
 			isa = PBXGroup;
 			children = (
+				1A54641826A079EF006A925E /* Assets.xcassets */,
 				1A54641D26A079EF006A925E /* Info.plist */,
 				1A54646B26A0959E006A925E /* UI */,
-				1A54646C26A095A3006A925E /* Resources */,
 				1A54641426A079EE006A925E /* PopularWhispersApp.swift */,
 				1A54641A26A079EF006A925E /* Preview Content */,
 			);
@@ -149,14 +149,6 @@
 				1A54641626A079EE006A925E /* ContentView.swift */,
 			);
 			path = UI;
-			sourceTree = "<group>";
-		};
-		1A54646C26A095A3006A925E /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				1A54641826A079EF006A925E /* Assets.xcassets */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		1A54646F26A09836006A925E /* SwiftUI */ = {
