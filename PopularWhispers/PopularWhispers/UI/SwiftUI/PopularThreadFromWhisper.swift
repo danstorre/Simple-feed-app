@@ -49,17 +49,5 @@ a very large a very large a very large a very large a very large a very large a 
             PopularThreadFromWhisper(title: "Most Popular Thread", whispersPresentable: whispers)
                 .preferredColorScheme(.dark)
         }
-        
-    }
-}
-
-struct PopularThreadHeader: View {
-    let title: String
-    
-    var body: some View {
-        Text(title)
-            .font(.title)
-            .fontWeight(.bold)
-            .multilineTextAlignment(.leading)
     }
 }
