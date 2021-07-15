@@ -26,8 +26,9 @@ struct PopularThreadFromWhisper: View {
                         }
                         Spacer()
                     }
-                    .border(Color.blue, width: 2)
-                    .padding()
+                    .padding(.vertical, 10.0)
+                    Rectangle()
+                        .frame(height: 1.0)
                 }
                 Spacer()
             }.padding()
