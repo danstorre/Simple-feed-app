@@ -13,6 +13,7 @@
 		1A54641C26A079EF006A925E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A54641B26A079EF006A925E /* Preview Assets.xcassets */; };
 		1A54646826A07F3E006A925E /* WhisperApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A54646726A07F3E006A925E /* WhisperApp.framework */; };
 		1A54646926A07F3E006A925E /* WhisperApp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A54646726A07F3E006A925E /* WhisperApp.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1A54646E26A095E6006A925E /* PopularThreadFromWhisper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A54646D26A095E6006A925E /* PopularThreadFromWhisper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		1A54642226A079EF006A925E /* PopularWhispersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopularWhispersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A54642826A079EF006A925E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A54646726A07F3E006A925E /* WhisperApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WhisperApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A54646D26A095E6006A925E /* PopularThreadFromWhisper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularThreadFromWhisper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,10 +94,10 @@
 		1A54641326A079EE006A925E /* PopularWhispers */ = {
 			isa = PBXGroup;
 			children = (
-				1A54641426A079EE006A925E /* PopularWhispersApp.swift */,
-				1A54641626A079EE006A925E /* ContentView.swift */,
-				1A54641826A079EF006A925E /* Assets.xcassets */,
 				1A54641D26A079EF006A925E /* Info.plist */,
+				1A54646B26A0959E006A925E /* UI */,
+				1A54646C26A095A3006A925E /* Resources */,
+				1A54641426A079EE006A925E /* PopularWhispersApp.swift */,
 				1A54641A26A079EF006A925E /* Preview Content */,
 			);
 			path = PopularWhispers;
@@ -123,6 +125,31 @@
 				1A54646726A07F3E006A925E /* WhisperApp.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1A54646B26A0959E006A925E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				1A54646F26A09836006A925E /* SwiftUI */,
+				1A54641626A079EE006A925E /* ContentView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		1A54646C26A095A3006A925E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1A54641826A079EF006A925E /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1A54646F26A09836006A925E /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				1A54646D26A095E6006A925E /* PopularThreadFromWhisper.swift */,
+			);
+			path = SwiftUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A54641726A079EE006A925E /* ContentView.swift in Sources */,
+				1A54646E26A095E6006A925E /* PopularThreadFromWhisper.swift in Sources */,
 				1A54641526A079EE006A925E /* PopularWhispersApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
