@@ -11,6 +11,9 @@
 		1A00037326A0A30C00F42EC9 /* WhisperReplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00037226A0A30C00F42EC9 /* WhisperReplyView.swift */; };
 		1A00037626A0A3A000F42EC9 /* WhisperPresentableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00037526A0A3A000F42EC9 /* WhisperPresentableData.swift */; };
 		1A00037926A0A6A800F42EC9 /* PopularWhispersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00037826A0A6A800F42EC9 /* PopularWhispersTests.swift */; };
+		1A00037C26A0E06800F42EC9 /* RemoteReplyLoaderAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00037B26A0E06800F42EC9 /* RemoteReplyLoaderAdapter.swift */; };
+		1A00037E26A0E0A500F42EC9 /* ReplyThreadLoaderAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00037D26A0E0A500F42EC9 /* ReplyThreadLoaderAdapter.swift */; };
+		1A00038026A0E0C000F42EC9 /* Factories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00037F26A0E0C000F42EC9 /* Factories.swift */; };
 		1A54641526A079EE006A925E /* PopularWhispersApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A54641426A079EE006A925E /* PopularWhispersApp.swift */; };
 		1A54641926A079EF006A925E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A54641826A079EF006A925E /* Assets.xcassets */; };
 		1A54641C26A079EF006A925E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A54641B26A079EF006A925E /* Preview Assets.xcassets */; };
@@ -49,6 +52,9 @@
 		1A00037526A0A3A000F42EC9 /* WhisperPresentableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhisperPresentableData.swift; sourceTree = "<group>"; };
 		1A00037726A0A6A800F42EC9 /* PopularWhispersTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PopularWhispersTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		1A00037826A0A6A800F42EC9 /* PopularWhispersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularWhispersTests.swift; sourceTree = "<group>"; };
+		1A00037B26A0E06800F42EC9 /* RemoteReplyLoaderAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteReplyLoaderAdapter.swift; sourceTree = "<group>"; };
+		1A00037D26A0E0A500F42EC9 /* ReplyThreadLoaderAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyThreadLoaderAdapter.swift; sourceTree = "<group>"; };
+		1A00037F26A0E0C000F42EC9 /* Factories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factories.swift; sourceTree = "<group>"; };
 		1A54641126A079EE006A925E /* PopularWhispers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopularWhispers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A54641426A079EE006A925E /* PopularWhispersApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularWhispersApp.swift; sourceTree = "<group>"; };
 		1A54641826A079EF006A925E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -90,6 +96,9 @@
 		1A00037A26A0B02D00F42EC9 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				1A00037B26A0E06800F42EC9 /* RemoteReplyLoaderAdapter.swift */,
+				1A00037D26A0E0A500F42EC9 /* ReplyThreadLoaderAdapter.swift */,
+				1A00037F26A0E0C000F42EC9 /* Factories.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -273,8 +282,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A00037126A0A15300F42EC9 /* PopularThreadHeader.swift in Sources */,
+				1A00037E26A0E0A500F42EC9 /* ReplyThreadLoaderAdapter.swift in Sources */,
+				1A00038026A0E0C000F42EC9 /* Factories.swift in Sources */,
 				1A54646E26A095E6006A925E /* PopularThreadFromWhisper.swift in Sources */,
 				1A54641526A079EE006A925E /* PopularWhispersApp.swift in Sources */,
+				1A00037C26A0E06800F42EC9 /* RemoteReplyLoaderAdapter.swift in Sources */,
 				1A00037626A0A3A000F42EC9 /* WhisperPresentableData.swift in Sources */,
 				1A00037326A0A30C00F42EC9 /* WhisperReplyView.swift in Sources */,
 			);
