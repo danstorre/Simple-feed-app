@@ -89,6 +89,35 @@ class GraphRepliesMakerTests: XCTestCase {
         })
     }
     
+    func test_createGraph_deliversErrorWhenCreatingTheGraphAndLoaderFails() {
+        let (sut, loader) = makeSUT()
+
+        let whisperReply1a = createWhisper(wildCardID: "1-a")
+        let whisperReply1b = createWhisper(wildCardID: "1-b")
+
+        let whisperReply1 = createWhisper(wildCardID: "1")
+        
+        let whisperNode1 = NodeWhisper(whisper: whisperReply1,
+                                       replies: [whisperReply1a, whisperReply1b])
+
+        let whisperReply2a = createWhisper(wildCardID: "2-a")
+        let whisperReply2b = createWhisper(wildCardID: "2-b")
+
+        let whisperReply2 = createWhisper(wildCardID: "2")
+        let whisperNode2 = NodeWhisper(whisper: whisperReply2,
+                                       replies: [whisperReply2a, whisperReply2b])
+        
+        let whisperRoot = createWhisper(wildCardID: "0")
+        let whisperRootResult = NodeWhisper(whisper: whisperRoot)
+        whisperRootResult.replies = [whisperNode1, whisperNode2]
+
+        expect(result: .failure(.invalidData), from: sut, and: whisperRoot, when: {
+            loader.completesWith(whispers: [whisperReply1, whisperReply2])
+            loader.completesWith(whispers: [whisperReply1a, whisperReply1b])
+            loader.completeWith(error: .invalidData)
+        })
+    }
+    
     func test_createGraph_doesntDeliverResultWhenDeallocated() {
         let loader = ReplyThreadLoaderSpy()
         var sut: GraphRepliesMaker? = GraphRepliesMaker(loader: loader)
