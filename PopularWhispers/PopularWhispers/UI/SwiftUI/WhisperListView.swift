@@ -26,14 +26,38 @@ struct PopularThreadFromWhisper_Previews: PreviewProvider {
     
     static var vm: AdapterWhisperList = create()
     
-    static func create() -> AdapterWhisperList {
-        let whisper = Whisper(description: "a text",
+    static func createAWhisper() -> Whisper {
+        Whisper(description: "a text",
                               heartCount: 1,
                               replyCount: 1,
                               image: URL(string: "http://a-url.com")!,
                               wildCardID: "id")
-        return AdapterWhisperList(loader: PopularReplyThreadVM(loader: MockReplyThreadLoaderAdapter(),
-                                                               whisper: whisper))
+    }
+    
+    static func create() -> AdapterWhisperList {
+        let whisper = createAWhisper()
+        return AdapterWhisperList(loader: PopularReplyThreadVM(loader: MockWhisperLoader(),
+                                                               whisper: whisper),
+                                  handler: { _ in })
+    }
+    
+    static func createVM() -> PopularReplyThreadVM {
+        PopularReplyThreadVM(loader: MockWhisperLoader(),
+                             whisper: createAWhisper())
+    }
+    
+    struct WhisperListViewTest: View {
+        @State var selection: String
+        
+        var body: some View {
+            VStack {
+                WhisperListView(title: "Popular Whispers",
+                                viewModel: AdapterWhisperList(loader: createVM(),
+                                                              handler: { selection = $0 }))
+                
+                Text("selection " + selection)
+            }
+        }
     }
     
     static var previews: some View {
@@ -46,7 +70,7 @@ struct PopularThreadFromWhisper_Previews: PreviewProvider {
     }
 }
 
-private class MockReplyThreadLoaderAdapter: PopularReplyThreadLoader {
+private class MockWhisperLoader: PopularReplyThreadLoader {
     
     func loadPopularReplyThread(from whisper: Whisper,
                                 completion: @escaping (ResultReplyThread) -> Void) {

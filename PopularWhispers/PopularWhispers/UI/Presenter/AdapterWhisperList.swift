@@ -9,8 +9,11 @@ class AdapterWhisperList: ObservableObject {
     private let loader: WhisperPresenter
     @Published var replies: [WhisperPresentableData] = []
     
-    init(loader: WhisperPresenter) {
+    let selection: (String) -> Void
+    
+    init(loader: WhisperPresenter, handler: @escaping (String) -> Void) {
         self.loader = loader
+        self.selection = handler
     }
     
     func loadItems() {

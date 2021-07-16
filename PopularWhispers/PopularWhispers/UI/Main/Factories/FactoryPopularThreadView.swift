@@ -12,7 +12,7 @@ enum FactoryPopularThreadView {
     static func create(from whisper: Whisper = FactoryPopularThreadView.aWhisper) -> WhisperListView {
         let popularRepliesVM: PopularReplyThreadVM = PopularReplyThreadVM(loader: FactoryPopularReplyThreadLoader.create(),
                                                                           whisper: whisper)
-        let whisperListAdapter = AdapterWhisperList(loader: popularRepliesVM)
+        let whisperListAdapter = AdapterWhisperList(loader: popularRepliesVM, handler: { _ in })
         
         return WhisperListView(title: "Popular Reply Thread",
                                         viewModel: whisperListAdapter)
