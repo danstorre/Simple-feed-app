@@ -28,6 +28,12 @@
 		1A54646326A07BB5006A925E /* RemoteReplyLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD96772269BD5F8002EEF2D /* RemoteReplyLoader.swift */; };
 		1A54646426A07BB5006A925E /* PopularReplyThreadLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A2E7D0E269BCF8800CA3294 /* PopularReplyThreadLoader.swift */; };
 		1A54646526A07BB5006A925E /* RepliesLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A546384269E452A006A925E /* RepliesLoader.swift */; };
+		1ACAA16326A1C00800490D40 /* PopularFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACAA16226A1C00800490D40 /* PopularFeedLoader.swift */; };
+		1ACAA16426A1C00900490D40 /* PopularFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACAA16226A1C00800490D40 /* PopularFeedLoader.swift */; };
+		1ACAA16726A1C05B00490D40 /* RemotePopularFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACAA16626A1C05B00490D40 /* RemotePopularFeedLoader.swift */; };
+		1ACAA16826A1C05B00490D40 /* RemotePopularFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACAA16626A1C05B00490D40 /* RemotePopularFeedLoader.swift */; };
+		1ACAA16A26A1C08E00490D40 /* RemotePopularFeedLoaderMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACAA16926A1C08E00490D40 /* RemotePopularFeedLoaderMapper.swift */; };
+		1ACAA16B26A1C08E00490D40 /* RemotePopularFeedLoaderMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACAA16926A1C08E00490D40 /* RemotePopularFeedLoaderMapper.swift */; };
 		1AD9676E269BD388002EEF2D /* RemoteReplyThreadLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD9676D269BD388002EEF2D /* RemoteReplyThreadLoaderTests.swift */; };
 		1AD96773269BD5F8002EEF2D /* RemoteReplyLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD96772269BD5F8002EEF2D /* RemoteReplyLoader.swift */; };
 		1AD96775269BD619002EEF2D /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD96774269BD619002EEF2D /* HTTPClient.swift */; };
@@ -65,6 +71,9 @@
 		1A54638C26A06D67006A925E /* PopularReplyThreadMakerFromGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularReplyThreadMakerFromGraph.swift; sourceTree = "<group>"; };
 		1A54644426A07B1B006A925E /* WhisperApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WhisperApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A54644C26A07B1B006A925E /* WhisperApp_iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhisperApp_iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1ACAA16226A1C00800490D40 /* PopularFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularFeedLoader.swift; sourceTree = "<group>"; };
+		1ACAA16626A1C05B00490D40 /* RemotePopularFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePopularFeedLoader.swift; sourceTree = "<group>"; };
+		1ACAA16926A1C08E00490D40 /* RemotePopularFeedLoaderMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePopularFeedLoaderMapper.swift; sourceTree = "<group>"; };
 		1AD9676D269BD388002EEF2D /* RemoteReplyThreadLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteReplyThreadLoaderTests.swift; sourceTree = "<group>"; };
 		1AD9676F269BD49B002EEF2D /* WhisperAppTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WhisperAppTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		1AD96772269BD5F8002EEF2D /* RemoteReplyLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteReplyLoader.swift; sourceTree = "<group>"; };
@@ -128,8 +137,10 @@
 		1A2E7CF6269B5F9100CA3294 /* WhisperApp */ = {
 			isa = PBXGroup;
 			children = (
+				1ACAA16526A1C04300490D40 /* RemotePopularFeedLoader */,
 				1AD96771269BD5E4002EEF2D /* RemoteReplyThreadLoaderAPI */,
 				1A2E7D0E269BCF8800CA3294 /* PopularReplyThreadLoader.swift */,
+				1ACAA16226A1C00800490D40 /* PopularFeedLoader.swift */,
 				1A2E7D10269BD10900CA3294 /* Whisper.swift */,
 				1A2E7CF8269B5F9100CA3294 /* Info.plist */,
 			);
@@ -174,6 +185,15 @@
 				1A54638C26A06D67006A925E /* PopularReplyThreadMakerFromGraph.swift */,
 			);
 			path = Replies;
+			sourceTree = "<group>";
+		};
+		1ACAA16526A1C04300490D40 /* RemotePopularFeedLoader */ = {
+			isa = PBXGroup;
+			children = (
+				1ACAA16626A1C05B00490D40 /* RemotePopularFeedLoader.swift */,
+				1ACAA16926A1C08E00490D40 /* RemotePopularFeedLoaderMapper.swift */,
+			);
+			path = RemotePopularFeedLoader;
 			sourceTree = "<group>";
 		};
 		1AD96771269BD5E4002EEF2D /* RemoteReplyThreadLoaderAPI */ = {
@@ -361,12 +381,15 @@
 			files = (
 				1A2E7D11269BD10900CA3294 /* Whisper.swift in Sources */,
 				1A2E7D0F269BCF8800CA3294 /* PopularReplyThreadLoader.swift in Sources */,
+				1ACAA16A26A1C08E00490D40 /* RemotePopularFeedLoaderMapper.swift in Sources */,
 				1AD96775269BD619002EEF2D /* HTTPClient.swift in Sources */,
 				1A546383269E44B4006A925E /* GraphRepliesMaker.swift in Sources */,
+				1ACAA16726A1C05B00490D40 /* RemotePopularFeedLoader.swift in Sources */,
 				1A546385269E452A006A925E /* RepliesLoader.swift in Sources */,
 				1A54638D26A06D67006A925E /* PopularReplyThreadMakerFromGraph.swift in Sources */,
 				1A54637C269E2CC1006A925E /* RemoteReplyThreadMapper.swift in Sources */,
 				1AD96773269BD5F8002EEF2D /* RemoteReplyLoader.swift in Sources */,
+				1ACAA16326A1C00800490D40 /* PopularFeedLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,12 +409,15 @@
 			files = (
 				1A54646426A07BB5006A925E /* PopularReplyThreadLoader.swift in Sources */,
 				1A54646026A07BB5006A925E /* GraphRepliesMaker.swift in Sources */,
+				1ACAA16B26A1C08E00490D40 /* RemotePopularFeedLoaderMapper.swift in Sources */,
 				1A54645F26A07BB5006A925E /* HTTPClient.swift in Sources */,
 				1A54646126A07BB5006A925E /* PopularReplyThreadMakerFromGraph.swift in Sources */,
+				1ACAA16826A1C05B00490D40 /* RemotePopularFeedLoader.swift in Sources */,
 				1A54646226A07BB5006A925E /* RemoteReplyThreadMapper.swift in Sources */,
 				1A54646526A07BB5006A925E /* RepliesLoader.swift in Sources */,
 				1A54645E26A07BB5006A925E /* Whisper.swift in Sources */,
 				1A54646326A07BB5006A925E /* RemoteReplyLoader.swift in Sources */,
+				1ACAA16426A1C00900490D40 /* PopularFeedLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

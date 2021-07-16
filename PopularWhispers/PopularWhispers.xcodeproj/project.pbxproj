@@ -92,8 +92,8 @@
 		1A00037426A0A39100F42EC9 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				1A00037526A0A3A000F42EC9 /* WhisperPresentableData.swift */,
 				1ACAA16026A1BE9F00490D40 /* PopularReplyThreadVM.swift */,
+				1A00037526A0A3A000F42EC9 /* WhisperPresentableData.swift */,
 				1ACAA15E26A1BE3500490D40 /* AdapterWhisperList.swift */,
 			);
 			path = Presenter;
