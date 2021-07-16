@@ -10,8 +10,10 @@ struct WhisperListView: View {
         ScrollView {
             VStack {
                 Header(title: title)
-                ForEach(viewModel.replies) {
-                    WhisperView(whisper: $0)
+                ForEach(viewModel.replies) { reply in
+                    WhisperView(whisper: reply) {
+                        viewModel.selection(reply.id)
+                    }
                 }
                 Spacer()
             }
@@ -35,9 +37,7 @@ struct PopularThreadFromWhisper_Previews: PreviewProvider {
     }
     
     static func create() -> AdapterWhisperList {
-        let whisper = createAWhisper()
-        return AdapterWhisperList(loader: PopularReplyThreadVM(loader: MockWhisperLoader(),
-                                                               whisper: whisper),
+        return AdapterWhisperList(loader: createVM(),
                                   handler: { _ in })
     }
     
@@ -62,6 +62,8 @@ struct PopularThreadFromWhisper_Previews: PreviewProvider {
     
     static var previews: some View {
         Group {
+            WhisperListViewTest(selection: "")
+            
             WhisperListView(title: "Most Popular Thread", viewModel: vm)
             
             WhisperListView(title: "Most Popular Thread", viewModel: vm)
@@ -80,11 +82,7 @@ private class MockWhisperLoader: PopularReplyThreadLoader {
         let whisper3 = Whisper(description: """
 a very large a very large a very large a very large a very large a very large a very large a very large a very large a very large a very large a very large a very large a very large a very large a very large text
 """, heartCount: 1, replyCount: 1, image: sameURL, wildCardID: "3")
-        let whispers = [whisper1, whisper2, whisper3,
-                        whisper1, whisper2, whisper3,
-                        whisper1, whisper2, whisper3,
-                        whisper1, whisper2, whisper3,
-                        whisper1, whisper2, whisper3]
+        let whispers = [whisper1, whisper2, whisper3]
     
         completion(.success(whispers))
     }

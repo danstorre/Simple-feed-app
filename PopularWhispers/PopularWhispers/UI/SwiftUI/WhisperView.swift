@@ -3,6 +3,7 @@ import SwiftUI
 
 struct WhisperView: View {
     let whisper: WhisperPresentableData
+    let selection: () -> Void
     
     var body: some View {
         HStack {
@@ -16,6 +17,9 @@ struct WhisperView: View {
         }
         .padding([.leading, .leading], 16.0)
         .padding([.top, .bottom], 8)
+        .onTapGesture {
+            selection()
+        }
     }
 }
 
@@ -23,7 +27,7 @@ struct WhisperView: View {
 struct WhisperReplyView_Previews: PreviewProvider {
     static var previews: some View {
         let whisper1 = WhisperPresentableData(description: "a text 1", heartCount: "2", image: nil, id: "1")
-        WhisperView(whisper: whisper1)
+        WhisperView(whisper: whisper1, selection: {})
             .previewLayout(.sizeThatFits)
     }
 }
