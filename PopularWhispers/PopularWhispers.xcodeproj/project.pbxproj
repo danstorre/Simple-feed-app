@@ -20,6 +20,8 @@
 		1A54646826A07F3E006A925E /* WhisperApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A54646726A07F3E006A925E /* WhisperApp.framework */; };
 		1A54646926A07F3E006A925E /* WhisperApp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A54646726A07F3E006A925E /* WhisperApp.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		1A54646E26A095E6006A925E /* WhisperListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A54646D26A095E6006A925E /* WhisperListView.swift */; };
+		1ACAA15F26A1BE3500490D40 /* AdapterWhisperList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACAA15E26A1BE3500490D40 /* AdapterWhisperList.swift */; };
+		1ACAA16126A1BE9F00490D40 /* PopularReplyThreadVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACAA16026A1BE9F00490D40 /* PopularReplyThreadVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		1A54642826A079EF006A925E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A54646726A07F3E006A925E /* WhisperApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WhisperApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A54646D26A095E6006A925E /* WhisperListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhisperListView.swift; sourceTree = "<group>"; };
+		1ACAA15E26A1BE3500490D40 /* AdapterWhisperList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdapterWhisperList.swift; sourceTree = "<group>"; };
+		1ACAA16026A1BE9F00490D40 /* PopularReplyThreadVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularReplyThreadVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				1A00037526A0A3A000F42EC9 /* WhisperPresentableData.swift */,
+				1ACAA16026A1BE9F00490D40 /* PopularReplyThreadVM.swift */,
+				1ACAA15E26A1BE3500490D40 /* AdapterWhisperList.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -284,8 +290,10 @@
 				1A00037126A0A15300F42EC9 /* Header.swift in Sources */,
 				1A00037E26A0E0A500F42EC9 /* ReplyThreadLoaderAdapter.swift in Sources */,
 				1A00038026A0E0C000F42EC9 /* Factories.swift in Sources */,
+				1ACAA16126A1BE9F00490D40 /* PopularReplyThreadVM.swift in Sources */,
 				1A54646E26A095E6006A925E /* WhisperListView.swift in Sources */,
 				1A54641526A079EE006A925E /* PopularWhispersApp.swift in Sources */,
+				1ACAA15F26A1BE3500490D40 /* AdapterWhisperList.swift in Sources */,
 				1A00037C26A0E06800F42EC9 /* RemoteReplyLoaderAdapter.swift in Sources */,
 				1A00037626A0A3A000F42EC9 /* WhisperPresentableData.swift in Sources */,
 				1A00037326A0A30C00F42EC9 /* WhisperView.swift in Sources */,
