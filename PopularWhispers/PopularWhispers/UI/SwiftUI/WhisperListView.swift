@@ -2,40 +2,66 @@
 import SwiftUI
 import WhisperApp
 
-struct PopularThreadFromWhisper: View {
+protocol WhisperPresenter {
+    func loadItems(completion: @escaping ([WhisperPresentableData]) -> Void)
+}
+
+class AdapterWhisperList: ObservableObject {
+    private let loader: WhisperPresenter
+    @Published var replies: [WhisperPresentableData] = []
+    
+    init(loader: WhisperPresenter) {
+        self.loader = loader
+    }
+    
+    func loadItems() {
+        loader.loadItems { [weak self] whispersViewData in
+            guard let self = self else { return }
+            
+            self.replies = whispersViewData
+        }
+    }
+}
+
+struct WhisperListView: View {
     let title: String
-    @ObservedObject var viewModel: PopularReplyThreadVM
+    @ObservedObject var viewModel: AdapterWhisperList
     
     var body: some View {
         ScrollView {
             VStack {
-                PopularThreadHeader(title: title)
+                Header(title: title)
                 ForEach(viewModel.replies) {
-                    WhisperReplyView(whisper: $0)
+                    WhisperView(whisper: $0)
                 }
                 Spacer()
             }
         }
         .onAppear {
-            viewModel.loadPopularThread()
+            viewModel.loadItems()
         }
     }
 }
 
 struct PopularThreadFromWhisper_Previews: PreviewProvider {
     
-    static var vm: PopularReplyThreadVM = PopularReplyThreadVM(loader: MockReplyThreadLoaderAdapter(),
-                                                       whisper: Whisper(description: "a text",
-                                                                        heartCount: 1,
-                                                                        replyCount: 1,
-                                                                        image: URL(string: "http://a-url.com")!,
-                                                                        wildCardID: "id"))
+    static var vm: AdapterWhisperList = create()
+    
+    static func create() -> AdapterWhisperList {
+        let whisper = Whisper(description: "a text",
+                              heartCount: 1,
+                              replyCount: 1,
+                              image: URL(string: "http://a-url.com")!,
+                              wildCardID: "id")
+        return AdapterWhisperList(loader: PopularReplyThreadVM(loader: MockReplyThreadLoaderAdapter(),
+                                                               whisper: whisper))
+    }
     
     static var previews: some View {
         Group {
-            PopularThreadFromWhisper(title: "Most Popular Thread", viewModel: vm)
+            WhisperListView(title: "Most Popular Thread", viewModel: vm)
             
-            PopularThreadFromWhisper(title: "Most Popular Thread", viewModel: vm)
+            WhisperListView(title: "Most Popular Thread", viewModel: vm)
                 .preferredColorScheme(.dark)
         }
     }

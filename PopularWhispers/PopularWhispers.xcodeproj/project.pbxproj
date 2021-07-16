@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A00037126A0A15300F42EC9 /* PopularThreadHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00037026A0A15300F42EC9 /* PopularThreadHeader.swift */; };
-		1A00037326A0A30C00F42EC9 /* WhisperReplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00037226A0A30C00F42EC9 /* WhisperReplyView.swift */; };
+		1A00037126A0A15300F42EC9 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00037026A0A15300F42EC9 /* Header.swift */; };
+		1A00037326A0A30C00F42EC9 /* WhisperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00037226A0A30C00F42EC9 /* WhisperView.swift */; };
 		1A00037626A0A3A000F42EC9 /* WhisperPresentableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00037526A0A3A000F42EC9 /* WhisperPresentableData.swift */; };
 		1A00037926A0A6A800F42EC9 /* PopularWhispersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00037826A0A6A800F42EC9 /* PopularWhispersTests.swift */; };
 		1A00037C26A0E06800F42EC9 /* RemoteReplyLoaderAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A00037B26A0E06800F42EC9 /* RemoteReplyLoaderAdapter.swift */; };
@@ -19,7 +19,7 @@
 		1A54641C26A079EF006A925E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A54641B26A079EF006A925E /* Preview Assets.xcassets */; };
 		1A54646826A07F3E006A925E /* WhisperApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A54646726A07F3E006A925E /* WhisperApp.framework */; };
 		1A54646926A07F3E006A925E /* WhisperApp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1A54646726A07F3E006A925E /* WhisperApp.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		1A54646E26A095E6006A925E /* PopularThreadFromWhisper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A54646D26A095E6006A925E /* PopularThreadFromWhisper.swift */; };
+		1A54646E26A095E6006A925E /* WhisperListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A54646D26A095E6006A925E /* WhisperListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,8 +47,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1A00037026A0A15300F42EC9 /* PopularThreadHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularThreadHeader.swift; sourceTree = "<group>"; };
-		1A00037226A0A30C00F42EC9 /* WhisperReplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhisperReplyView.swift; sourceTree = "<group>"; };
+		1A00037026A0A15300F42EC9 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		1A00037226A0A30C00F42EC9 /* WhisperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhisperView.swift; sourceTree = "<group>"; };
 		1A00037526A0A3A000F42EC9 /* WhisperPresentableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhisperPresentableData.swift; sourceTree = "<group>"; };
 		1A00037726A0A6A800F42EC9 /* PopularWhispersTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PopularWhispersTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		1A00037826A0A6A800F42EC9 /* PopularWhispersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularWhispersTests.swift; sourceTree = "<group>"; };
@@ -63,7 +63,7 @@
 		1A54642226A079EF006A925E /* PopularWhispersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PopularWhispersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A54642826A079EF006A925E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1A54646726A07F3E006A925E /* WhisperApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WhisperApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1A54646D26A095E6006A925E /* PopularThreadFromWhisper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularThreadFromWhisper.swift; sourceTree = "<group>"; };
+		1A54646D26A095E6006A925E /* WhisperListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhisperListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,9 +173,9 @@
 		1A54646F26A09836006A925E /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
-				1A54646D26A095E6006A925E /* PopularThreadFromWhisper.swift */,
-				1A00037026A0A15300F42EC9 /* PopularThreadHeader.swift */,
-				1A00037226A0A30C00F42EC9 /* WhisperReplyView.swift */,
+				1A54646D26A095E6006A925E /* WhisperListView.swift */,
+				1A00037026A0A15300F42EC9 /* Header.swift */,
+				1A00037226A0A30C00F42EC9 /* WhisperView.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -281,14 +281,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A00037126A0A15300F42EC9 /* PopularThreadHeader.swift in Sources */,
+				1A00037126A0A15300F42EC9 /* Header.swift in Sources */,
 				1A00037E26A0E0A500F42EC9 /* ReplyThreadLoaderAdapter.swift in Sources */,
 				1A00038026A0E0C000F42EC9 /* Factories.swift in Sources */,
-				1A54646E26A095E6006A925E /* PopularThreadFromWhisper.swift in Sources */,
+				1A54646E26A095E6006A925E /* WhisperListView.swift in Sources */,
 				1A54641526A079EE006A925E /* PopularWhispersApp.swift in Sources */,
 				1A00037C26A0E06800F42EC9 /* RemoteReplyLoaderAdapter.swift in Sources */,
 				1A00037626A0A3A000F42EC9 /* WhisperPresentableData.swift in Sources */,
-				1A00037326A0A30C00F42EC9 /* WhisperReplyView.swift in Sources */,
+				1A00037326A0A30C00F42EC9 /* WhisperView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

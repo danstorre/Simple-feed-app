@@ -1,7 +1,7 @@
 
 import SwiftUI
 
-struct PopularThreadHeader: View {
+struct Header: View {
     let title: String
     
     var body: some View {
@@ -14,7 +14,7 @@ struct PopularThreadHeader: View {
 
 struct PopularThreadHeader_Previews: PreviewProvider {
     static var previews: some View {
-        PopularThreadHeader(title: "A title")
+        Header(title: "A title")
             .previewLayout(.sizeThatFits)
     }
 }

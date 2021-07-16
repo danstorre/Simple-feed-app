@@ -16,12 +16,13 @@ enum CreatePopularThreadView {
                                           image: URL(string: "http://a-url.com")!,
                                           wildCardID: "05c6f4b2e1123a3b427cf57c25ce26be41a789")
     
-    static func create(from whisper: Whisper = CreatePopularThreadView.aWhisper) -> PopularThreadFromWhisper {
+    static func create(from whisper: Whisper = CreatePopularThreadView.aWhisper) -> WhisperListView {
         let popularRepliesVM: PopularReplyThreadVM = PopularReplyThreadVM(loader: FactoryPopularReplyThreadLoader.create(),
-                                                                  whisper: CreatePopularThreadView.aWhisper)
+                                                                          whisper: whisper)
+        let whisperListAdapter = AdapterWhisperList(loader: popularRepliesVM)
         
-        return PopularThreadFromWhisper(title: "Popular Reply Thread",
-                                        viewModel: popularRepliesVM)
+        return WhisperListView(title: "Popular Reply Thread",
+                                        viewModel: whisperListAdapter)
     }
 }
 
