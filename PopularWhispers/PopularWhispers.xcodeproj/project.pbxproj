@@ -26,6 +26,8 @@
 		1ACAA17026A1C22D00490D40 /* FactoryPopularReplyThreadLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACAA16F26A1C22D00490D40 /* FactoryPopularReplyThreadLoader.swift */; };
 		1ACAA17426A1C39700490D40 /* RemotePopularFeedAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACAA17326A1C39700490D40 /* RemotePopularFeedAdapter.swift */; };
 		1ACAA17626A1C54A00490D40 /* PopularWhisperFeedVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACAA17526A1C54A00490D40 /* PopularWhisperFeedVM.swift */; };
+		1ACAA17826A1C5E300490D40 /* FactoryPopularWhispersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACAA17726A1C5E300490D40 /* FactoryPopularWhispersView.swift */; };
+		1ACAA17A26A1C63E00490D40 /* FactoryPopularWhisperFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ACAA17926A1C63E00490D40 /* FactoryPopularWhisperFeedLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +78,8 @@
 		1ACAA16F26A1C22D00490D40 /* FactoryPopularReplyThreadLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryPopularReplyThreadLoader.swift; sourceTree = "<group>"; };
 		1ACAA17326A1C39700490D40 /* RemotePopularFeedAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemotePopularFeedAdapter.swift; sourceTree = "<group>"; };
 		1ACAA17526A1C54A00490D40 /* PopularWhisperFeedVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularWhisperFeedVM.swift; sourceTree = "<group>"; };
+		1ACAA17726A1C5E300490D40 /* FactoryPopularWhispersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryPopularWhispersView.swift; sourceTree = "<group>"; };
+		1ACAA17926A1C63E00490D40 /* FactoryPopularWhisperFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryPopularWhisperFeedLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +205,8 @@
 			children = (
 				1ACAA16D26A1C20800490D40 /* FactoryPopularThreadView.swift */,
 				1ACAA16F26A1C22D00490D40 /* FactoryPopularReplyThreadLoader.swift */,
+				1ACAA17726A1C5E300490D40 /* FactoryPopularWhispersView.swift */,
+				1ACAA17926A1C63E00490D40 /* FactoryPopularWhisperFeedLoader.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -326,10 +332,12 @@
 				1A00037126A0A15300F42EC9 /* Header.swift in Sources */,
 				1A00037E26A0E0A500F42EC9 /* ReplyThreadLoaderAdapter.swift in Sources */,
 				1A00038026A0E0C000F42EC9 /* URLSession+HTTPClient.swift in Sources */,
+				1ACAA17826A1C5E300490D40 /* FactoryPopularWhispersView.swift in Sources */,
 				1ACAA16126A1BE9F00490D40 /* PopularReplyThreadVM.swift in Sources */,
 				1A54646E26A095E6006A925E /* WhisperListView.swift in Sources */,
 				1A54641526A079EE006A925E /* PopularWhispersApp.swift in Sources */,
 				1ACAA15F26A1BE3500490D40 /* AdapterWhisperList.swift in Sources */,
+				1ACAA17A26A1C63E00490D40 /* FactoryPopularWhisperFeedLoader.swift in Sources */,
 				1ACAA17626A1C54A00490D40 /* PopularWhisperFeedVM.swift in Sources */,
 				1ACAA17426A1C39700490D40 /* RemotePopularFeedAdapter.swift in Sources */,
 				1A00037C26A0E06800F42EC9 /* RemoteReplyLoaderAdapter.swift in Sources */,
