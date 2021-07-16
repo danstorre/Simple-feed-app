@@ -138,7 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				1ACAA16526A1C04300490D40 /* RemotePopularFeedLoader */,
-				1AD96771269BD5E4002EEF2D /* RemoteReplyThreadLoaderAPI */,
+				1AD96771269BD5E4002EEF2D /* RemoteReplyThreadLoader */,
 				1A2E7D0E269BCF8800CA3294 /* PopularReplyThreadLoader.swift */,
 				1ACAA16226A1C00800490D40 /* PopularFeedLoader.swift */,
 				1A2E7D10269BD10900CA3294 /* Whisper.swift */,
@@ -196,13 +196,13 @@
 			path = RemotePopularFeedLoader;
 			sourceTree = "<group>";
 		};
-		1AD96771269BD5E4002EEF2D /* RemoteReplyThreadLoaderAPI */ = {
+		1AD96771269BD5E4002EEF2D /* RemoteReplyThreadLoader */ = {
 			isa = PBXGroup;
 			children = (
 				1A54638926A06AC0006A925E /* Replies */,
 				1A54638626A06A2B006A925E /* Network */,
 			);
-			path = RemoteReplyThreadLoaderAPI;
+			path = RemoteReplyThreadLoader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
