@@ -6,7 +6,7 @@ import SwiftUI
 struct PopularWhispersApp: App {
     var body: some Scene {
         WindowGroup {
-            CreatePopularThreadView.create()
+            FactoryPopularThreadView.create()
         }
     }
 }
